@@ -30,7 +30,7 @@ CREATE TABLE captions (
     photo_id INT REFERENCES photos (id),
     commenter_id INT REFERENCES users (id),
     body VARCHAR,
-    active BOOLEAN;
+    active BOOLEAN
 );
 
 CREATE TABLE likes (
