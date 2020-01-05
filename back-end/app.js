@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -16,10 +15,9 @@ const storage = multer.diskStorage({
         cb(null,name)
     }
 })
-​
+
 const upload = multer({storage: storage});
 
-const homeRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
 const photosRouter = require('./routes/photos');
 const captionsRouter = require('./routes/captions');
@@ -32,14 +30,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-​
 
-app.use('/home', homeRouter);
 app.use('/users', usersRouter);
 app.use('/photos', photosRouter);
 app.use('/captions', captionsRouter);
 app.use('/likes', likesRouter);
-​
 app.post('/upload', upload.single("image"), (req, res, next) => {
     console.log('req.file', req.file)
     console.log('req.body',req.body) 
@@ -51,5 +46,5 @@ app.post('/upload', upload.single("image"), (req, res, next) => {
         message: 'file recieved, image was uploaded to images folder.'
     })
 })
-​
+
 module.exports = app;
