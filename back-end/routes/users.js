@@ -10,7 +10,6 @@ const db = require('./db')
 
 router.get('/all', async (req, res) => {
     console.log('running');
-
     try {
         let users = await db.any('SELECT * FROM users')
         res.json({
@@ -24,6 +23,7 @@ router.get('/all', async (req, res) => {
         })
     }
 })
+
 
 router.get('/:displaname', async (req, res)=>{
     let displayName = req.params.firstName;
@@ -56,13 +56,13 @@ try {
 
 
 router.post('/signup', async  (req, res) => {
+    let insertstuff = 
+    `INSERT INTO users (email, firstname, displayname, bio, profilePic, active)
+     VALUES ($1, $2, $3, $4, $5, $6)`
     
     try {
- let insertstuff = 
-        `INSERT INTO users (displayname, email, bio, profilePic, active)
-         VALUES ($1, $2, $3, $4, $5)`
 
-        await db.none(insertstuff, [req.body.displayname, req.body.email, req.body.bio, req.body.profilePic, true])
+        await db.none(insertstuff, [req.body.email, req.body.firstname, req.body.displayname, req.body.bio, req.body.profilePic, true])
        
         res.json({
             payload: req.body,
