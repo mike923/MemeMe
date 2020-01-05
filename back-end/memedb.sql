@@ -41,4 +41,3 @@ CREATE TABLE likes (
     active BOOLEAN
 );
 
-
