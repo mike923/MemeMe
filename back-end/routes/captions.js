@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+<<<<<<< HEAD
 
 
 const db = require('./db')
@@ -96,5 +97,28 @@ catch (error ){
 })
 
 
+=======
+const db = require('./db')
+
+/* GET users listing. */
+router.get('/:photo_id', async (req, res, next) => {
+  console.log(`you've hit captions/photo_id`)
+  try {
+    let captions = await db.any(`
+      SELECT *
+      FROM captions
+      WHERE photo_id = ${req.params.photo_id}
+    `)
+
+    res.json({
+      captions,
+    })
+  } catch(err) {
+    res.json({
+      error: 'your captions could not be retrieved'
+    })
+  }
+});
+>>>>>>> a4894c33db308c66e52dbae56c5a93611748372e
 
 module.exports = router;
