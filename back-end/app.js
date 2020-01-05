@@ -31,12 +31,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bafe968b2f75a14e6350b2bc68cc105dc00cf3fc
 app.use('/users', usersRouter);
 app.use('/photos', photosRouter);
 app.use('/captions', captionsRouter);
 app.use('/likes', likesRouter);
+<<<<<<< HEAD
 
+=======
+>>>>>>> bafe968b2f75a14e6350b2bc68cc105dc00cf3fc
 app.post('/upload', upload.single("image"), (req, res, next) => {
     console.log('req.file', req.file)
     console.log('req.body',req.body) 
