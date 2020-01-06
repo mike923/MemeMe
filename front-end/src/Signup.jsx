@@ -8,7 +8,7 @@ class Signup extends Component {
             email: '',
             password: '',
             fullName: '',
-            userName: '',
+            username: '',
         }
         this.state = this.initialState
     }
@@ -32,7 +32,7 @@ class Signup extends Component {
                 email,
                 password,
                 fullName, 
-                userName, 
+                username, 
             },
             submitForm,
             handleInput,
@@ -52,13 +52,13 @@ class Signup extends Component {
                 /><br/>
                 <label for="username">username: </label>
                 <input 
-                    id="userName"
+                    id="username"
                     type="text"
-                    name="userName"
-                    value={userName}
+                    name="username"
+                    value={username}
                     // pattern=
                     onChange={handleInput}
-                    placeholder="user Name"
+                    placeholder="username"
                 /><br/>
                 <label for="password">password: </label>
                 <input 
@@ -69,7 +69,7 @@ class Signup extends Component {
                     onChange={handleInput}
                     placeholder="password"
                 /><br/>
-                <label for="fullName">fullName: </label>
+                <label for="fullName">full name: </label>
                 <input 
                     id="fullName"
                     type="text"
