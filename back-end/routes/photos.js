@@ -24,9 +24,9 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   console.log('Getting photo by id. Please standby')
  
-  const {id} = parseInt(req.params)
+  const {id} = req.params
   try{
-    const photos = await db.none(`SELECT * FROM photos WHERE id = $1`, [id])
+    const photos = await db.any(`SELECT * FROM photos WHERE id = $1`, [id])
     res.json ({
       payload: photos,
       message: 'Success getting photo',
@@ -46,9 +46,10 @@ router.get('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   console.log('Deleting photo by id. Please standby')
+  
   const {id} = req.params
   try{
-     await db.one('DELETE FROM photos WHERE id = $1' [id])
+     await db.one('DELETE FROM photos WHERE id = $1', [id])
     res.json ({
       message: 'Success removing photo',
       success: true

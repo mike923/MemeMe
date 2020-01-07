@@ -37,7 +37,7 @@ CREATE TABLE likes (
     id SERIAL PRIMARY KEY,
     like_value BOOLEAN, 
     liker_id INT REFERENCES users (id),
-    caption_id INT REFERENCES captions (id),
+    caption_id  INT REFERENCES captions (id),
     active BOOLEAN
 );
 
