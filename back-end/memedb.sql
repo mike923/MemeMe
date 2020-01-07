@@ -59,7 +59,7 @@ VALUES
     (3, 'https://cdn.livekindly.co/wp-content/uploads/2019/10/vegan-plant-based-news-meme14-1-Cropped.jpg', '01/08/2020', true),
     (4, 'https://imgflip.com/s/meme/Black-Girl-Wat.jpg', '01/09/2020', true);
 
-INSERT INTO captions (photo_id, commenter_id, body)
+INSERT INTO captions (photo_id, commenter_id, body, active)
 VALUES 
     (1, 1, 'ARANSA HERE FIRST POST', true),
     (1, 2, 'OWEN HERE FIRST POST', true),
