@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom'
-import test from './test'
-import Signup from './Signup'
+import Signup from './Components/Signup'
+import Landing from './Components/Landing'
 import './App.css';
 
 
@@ -28,17 +28,23 @@ class App extends Component {
         return (
             <div className="App">
                 <h1>Welcome to Meme Me</h1>
-                <nav onClick={hideLink} hidden={hideLinks}>
-                    <Link onClick={hideLink} to="/login">login</Link>- 
-                    <Link onClick={hideLink} to="/signup">signup</Link>
+                <nav> 
+                    <Link 
+                        to="/login"
+                        // onClick={hideLink}
+                    >login</Link><br/>
+                    <Link 
+                        to="/signup"
+                        // onClick={hideLink}
+                    >signup</Link>
                 </nav>
                 <Switch>
-                    <Route path="/login" component={test} />
-                    <Route path="/signup" component={test} />
-                    <Route path="/" component={test} />
-                    <Route path="/" component={test} />
+                    <Route path="/login" component={Landing} />
+                    <Route path="/signup" component={Signup} />
+                    <Route path="/" component={Signup} />
+                    <Route path="/" component={Signup} />
                 </Switch>
-                <Signup />
+                {/* <Signup /> */}
             </div>
         );
     }
