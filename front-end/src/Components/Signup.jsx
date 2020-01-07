@@ -41,7 +41,7 @@ class Signup extends Component {
         return(
             <form onSubmit={submitForm}>
                 <h1>Sign-Up for Meme Me</h1>
-                <label htmlFor="email">email: </label>
+                <label for="email">email: </label>
                 <input 
                     id="email"
                     type="email"
@@ -50,7 +50,7 @@ class Signup extends Component {
                     onChange={handleInput}
                     placeholder="email@domain.org"
                 /><br/>
-                <label htmlFor="username">username: </label>
+                <label for="username">username: </label>
                 <input 
                     id="username"
                     type="text"
@@ -60,7 +60,7 @@ class Signup extends Component {
                     onChange={handleInput}
                     placeholder="username"
                 /><br/>
-                <label htmlFor="password">password: </label>
+                <label for="password">password: </label>
                 <input 
                     id="password"
                     type="password"
@@ -69,7 +69,7 @@ class Signup extends Component {
                     onChange={handleInput}
                     placeholder="password"
                 /><br/>
-                <label htmlFor="fullName">full name: </label>
+                <label for="fullName">full name: </label>
                 <input 
                     id="fullName"
                     type="text"
@@ -78,7 +78,7 @@ class Signup extends Component {
                     onChange={handleInput}
                     placeholder="Name"
                 /><br/>
-                <label htmlFor="bio">bio: </label>
+                <label for="bio">bio: </label>
                 <input 
                     id="bio"
                     type="text"

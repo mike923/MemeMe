@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-class Signup extends Component {
+class Landing extends Component {
     constructor() {
         super()
-        this.initialState = {
-            bio: '',
+        this.state = {
             email: '',
             password: '',
-            fullName: '',
-            username: '',
         }
-        this.state = this.initialState
     }
 
     // submitForm is the function used to handle the onSubmit event for the form in the render 
@@ -22,25 +19,24 @@ class Signup extends Component {
         console.log('here would go our network request to create a new user')
     }
 
+
     // handleInput is the function responsible for updating the state everytime user presses a key
     handleInput = ({target: {id, value}}) => this.setState({ [id]: value })
+
 
     render() {
         let {
             state: {
-                bio,
                 email,
                 password,
-                fullName, 
-                username, 
             },
             submitForm,
             handleInput,
         } = this
 
-        return(
-            <form onSubmit={submitForm}>
-                <h1>Sign-Up for Meme Me</h1>
+        return (
+            <form>
+                <h2>Landing page</h2>
                 <label htmlFor="email">email: </label>
                 <input 
                     id="email"
@@ -49,16 +45,6 @@ class Signup extends Component {
                     value={email}
                     onChange={handleInput}
                     placeholder="email@domain.org"
-                /><br/>
-                <label htmlFor="username">username: </label>
-                <input 
-                    id="username"
-                    type="text"
-                    name="username"
-                    value={username}
-                    // pattern=
-                    onChange={handleInput}
-                    placeholder="username"
                 /><br/>
                 <label htmlFor="password">password: </label>
                 <input 
@@ -69,28 +55,12 @@ class Signup extends Component {
                     onChange={handleInput}
                     placeholder="password"
                 /><br/>
-                <label htmlFor="fullName">full name: </label>
-                <input 
-                    id="fullName"
-                    type="text"
-                    name="fullName"
-                    value={fullName}
-                    onChange={handleInput}
-                    placeholder="Name"
-                /><br/>
-                <label htmlFor="bio">bio: </label>
-                <input 
-                    id="bio"
-                    type="text"
-                    name="bio"
-                    value={bio}
-                    onChange={handleInput}
-                    placeholder="Tell us about yourself"
-                /><br/>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Log In</button><br/><br/>
+                <Link to='./signup'>New to Meme Me?<br/>Sign Up here.</Link>
             </form>
         )
     }
 }
 
-export default Signup
+
+export default Landing
