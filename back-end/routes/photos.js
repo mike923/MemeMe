@@ -22,6 +22,7 @@ router.get('/', async (req, res, next) => {
     console.log('err',error)
   }
 });
+
 router.get('/:id', async (req, res, next) => {
   console.log('Getting photo by id. Please standby')
  
