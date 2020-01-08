@@ -43,17 +43,16 @@ router.get('/:id', async (req, res, next) => {
 })
 
 router.post('/', async(req, res, next) => {
-  const {posterId, pictureUrl, datePosted, active} = req.body
-  const inputQuery = (`INSERT INTO photos (poster_id, picture_url,date_posted, active) VALUES($1, $2, $3, $4) `)
-  console.log('Adding photo')
+  const {poster_id, picture_url, date_posted} = req.body
+  const inputQuery = `INSERT INTO photos (poster_id, picture_url, date_posted, active) VALUES($1, $2, $3, $4)`
+  console.log('Adding photo', poster_id, picture_url, date_posted )
   try {
-      await db.one(inputQuery,[posterId, pictureUrl, datePosted, active])
+      await db.none(inputQuery, [poster_id, picture_url, date_posted, true])
       res.json({
           message:'Success. Photo posted',
           payload: req.body,
           success: true
       })
-
   } catch(error){
       res.json({
           message: 'Failed to add comment to post',
@@ -84,6 +83,7 @@ router.patch('/:id', async (req, res, next) => {
     console.log('err', error)
   }
 })
+
 module.exports = router;
 
 
