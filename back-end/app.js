@@ -33,6 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/photos', photosRouter);
+app.post('photos/upload', upload.single('image'),(req, res, next) => {
+    console.log('req file', req.file)
+    console.log('req body', req.body)
+})
 app.use('/captions', captionsRouter);
 app.use('/likes', likesRouter);
 
