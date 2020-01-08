@@ -8,6 +8,7 @@ CREATE DATABASE memedb;
 CREATE TABLE users( 
     id SERIAL PRIMARY KEY,
     email VARCHAR, 
+    user_password VARCHAR, 
     firstname VARCHAR,
     displayname VARCHAR,
     bio VARCHAR,
