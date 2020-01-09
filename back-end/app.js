@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('./routes/db.js')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -33,9 +34,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/photos', photosRouter);
-app.post('photos/upload', upload.single('image'),(req, res, next) => {
+app.post('/photos/upload/:poster_id', upload.single('imgURL'), async (req, res, next) => {
     console.log('req file', req.file)
-    console.log('req body', req.body)
+     
+    const {poster_id} = req.params
+    const {date_posted} = req.body
+    const inputQuery = `INSERT INTO photos (poster_id, picture_url, date_posted, active) VALUES ($1, $2, $3, $4)`
+    let imgURL = 'http://localhost:3001/' + req.file.path.replace('public/', '')
+
+    try {
+        await db.none(inputQuery, [poster_id, imgURL, date_posted, true])
+        res.json({
+            message: 'Success. Photo uploaded',
+            payload: req.body,
+            success: true
+        })
+    } catch(error){
+        res.json({
+            message: 'Failed to upload photo',
+            success: false
+        })
+        console.log('err', error)
+    }
+    
 })
 app.use('/captions', captionsRouter);
 app.use('/likes', likesRouter);
