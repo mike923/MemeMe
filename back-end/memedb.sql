@@ -12,7 +12,8 @@ CREATE TABLE users(
     displayname VARCHAR,
     bio VARCHAR,
     profilePic VARCHAR,
-    active BOOLEAN 
+    active BOOLEAN, 
+    user_passowrd VARCHAR
 );
 
 
