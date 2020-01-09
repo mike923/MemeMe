@@ -43,10 +43,10 @@ CREATE TABLE likes (
 );
 
 CREATE TABLE user_session (
-    id INT REFERENCE users (id)
+    id INT REFERENCES users (id)
 );
 
-INSERT INTO users (email, firstname, displayname, bio, profilePic, active, user_passowrd)
+INSERT INTO users (email, firstname, displayname, bio, profilePic, active, user_password)
 VALUES 
     ('aransagarcia@pursuit.org', 'aransa', 'a_garcia', 'yert im fron the bronx', 'https://i.vimeocdn.com/video/353648146_780x439.jpg', true, 'agarcia'),
     ('owenjones@pursuit.org', 'owne', 'o_jones', 'yert im from brooklyn', 'https://media.licdn.com/dms/image/C4E03AQFJFRKW5QbJEg/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=T9WMAksTCK6XfMEXTlN0ZnUPsSamoOX_yYEENzOaVdk', true, 'ojones'),

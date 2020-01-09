@@ -5,13 +5,13 @@ const db = require('./db')
 
 
 router.get("/specific/active", async (req, res) => {
-    let {email, password} = req.body
+    let {email, user_password} = req.body
     try {
     let user = await db.any(
       `SELECT * FROM users 
       WHERE email = $1
-      AND password = $2`
-    , [email, password]);
+      AND user_password = $2`
+    , [email, user_password]);
     res.json({
       payload: user,
       message: "Succcess, Retrieved all the users"

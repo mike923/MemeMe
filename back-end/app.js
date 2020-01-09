@@ -23,6 +23,7 @@ const usersRouter = require('./routes/users');
 const photosRouter = require('./routes/photos');
 const captionsRouter = require('./routes/captions');
 const likesRouter = require('./routes/likes');
+const sessionsRouter = require('./routes/sessions');
 const app = express();
 
 app.use(cors())
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/sessions', sessionsRouter);
 app.use('/users', usersRouter);
 app.use('/photos', photosRouter);
 app.post('/photos/upload/:poster_id', upload.single('imgURL'), async (req, res, next) => {
