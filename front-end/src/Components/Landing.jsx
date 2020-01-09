@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 
 class Landing extends Component {
     constructor() {
@@ -11,12 +13,20 @@ class Landing extends Component {
     }
 
     // submitForm is the function used to handle the onSubmit event for the form in the render 
-    submitForm = (event) => {
+    submitForm = async (event) => {
         event.preventDefault();
 
         console.log(event.target)
         console.log(this.state)
         console.log('here would go our network request to create a new user')
+
+        let loginURL = 'http://localhost:3001/users/all/active'
+       try {
+        let response = await axios.get(loginURL)
+        console.log(response)
+       } catch (error){
+           console.log(error, 'axios not working')
+       }
     }
 
 
@@ -35,7 +45,7 @@ class Landing extends Component {
         } = this
 
         return (
-            <form>
+            <form onSubmit ={this.submitForm}>
                 <h2>Landing page</h2>
                 <label htmlFor="email">email: </label>
                 <input 
