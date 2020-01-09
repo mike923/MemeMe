@@ -6,15 +6,18 @@ const db = require('./db')
 
 router.get("/specific/active", async (req, res) => {
     let {email, user_password} = req.body
+    console.log('body', req.body)
     try {
+
     let user = await db.any(
       `SELECT * FROM users 
       WHERE email = $1
       AND user_password = $2`
     , [email, user_password]);
     res.json({
-      payload: user,
-      message: "Succcess, Retrieved all the users"
+        email, user_password,
+        message: "Succcess, Retrieved all the users",
+        payload: user,
     });
   } catch (error) {
     console.log(error);
