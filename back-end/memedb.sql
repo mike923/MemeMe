@@ -8,7 +8,7 @@ CREATE DATABASE memedb;
 CREATE TABLE users( 
     id SERIAL PRIMARY KEY,
     email VARCHAR, 
-    user_password VARCHAR,
+    user_password VARCHAR, 
     firstname VARCHAR,
     displayname VARCHAR,
     bio VARCHAR,
@@ -41,6 +41,10 @@ CREATE TABLE likes (
     caption_id INT REFERENCES captions (id),
     active BOOLEAN
 );
+
+CREATE TABLE user_session{
+    id INT REFERENCE users (id)
+}
 
 INSERT INTO users (email, firstname, displayname, bio, profilePic, active, user_passowrd)
 VALUES 

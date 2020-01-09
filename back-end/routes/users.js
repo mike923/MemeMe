@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('./db')
 
 
+
 router.get("/specific/active", async (req, res) => {
     let {email, password} = req.body
     try {
@@ -23,21 +24,19 @@ router.get("/specific/active", async (req, res) => {
   }
 });
 
-
-
-
 router.get('/all/active', async (req, res) => {
     console.log('running');
     try {
         let users = await db.any('SELECT * FROM users WHERE active = true')
         res.json({
             payload: users,
-            message: "Succcess, Retrieved all the users"
+            message: "Succcess, Retrieved all active users"
         })
     } catch (error) {
         console.log(error)
         res.json({
-            message: 'error something went wrong. Could not retrieve all users.'
+            message: 'error something went wrong. Could not retrieve all users.',
+            error
         })
     }
 })
@@ -53,22 +52,16 @@ router.get('/all/inactive', async (req, res) => {
     } catch (error) {
         console.log(error)
         res.json({
-            message: 'error something went wrong. Could not retrieve all users.'
+            message: 'error something went wrong. Could not retrieve all users.',
+            error
         })
     }
 })
 
-
 router.get('/:displayname', async (req, res)=>{
-    let {displayname} = req.params
-    
     try {
-        let userQuery = `SELECT * FROM users WHERE displayname = $1 AND active = true`;
-        let user = await db.one(userQuery, [displayname]);
+        let user = await db.one(`SELECT * FROM users WHERE displayname = ${req.params.displayname} AND active = true`);
         console.log(user);
-        if(user.length === 0){
-            throw new Error;
-        }
 
         res.json({
             payload: user,
@@ -77,7 +70,7 @@ router.get('/:displayname', async (req, res)=>{
 
     } catch (error){
         console.log(error)
-        res.json({"err": "This user does not exist"});
+        res.json({"err": "This user does not exist", error});
     }
 });
 
@@ -109,27 +102,23 @@ router.patch('/:user_id', async (req, res) => {
     }
 })
 
-
-
-
-
-
 router.post('/signup', async  (req, res) => {
-    let insertstuff = 
-    `INSERT INTO users (email, firstname, displayname, bio, profilePic, active)
-     VALUES ($1, $2, $3, $4, $5, $6)`
-    
-    try {
+    let insertstuff = `
+        INSERT INTO users (email, user_password, firstname, displayname, bio, profilePic, active)
+        VALUES ($/email/, $/user_password/, $/firstname/, $/displayname/, $/bio/, $/profilePic/, $/active/)
+    `
 
-        await db.none(insertstuff, [req.body.email, req.body.firstname, req.body.displayname, req.body.bio, req.body.profilePic, true])
-       
+    let payload = {email, user_password, firstname, displayname, bio, profilePic, active} = req.body
+    try {
+        await db.none(insertstuff, payload)
         res.json({
-            payload: req.body,
-            message: "POST request arrived"
+            payload,
+            message: "POST request arrived",
         })
     } catch (error) {
         res.json({
-            message: "there was an error registering user"
+            message: "there was an error registering user",
+            error
         })
     }
 })
