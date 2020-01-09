@@ -42,6 +42,10 @@ CREATE TABLE likes (
     active BOOLEAN
 );
 
+CREATE TABLE user_session{
+    id INT REFERENCE users (id)
+}
+
 INSERT INTO users (email, firstname, displayname, bio, profilePic, active, user_passowrd)
 VALUES 
     ('aransagarcia@pursuit.org', 'aransa', 'a_garcia', 'yert im fron the bronx', 'https://i.vimeocdn.com/video/353648146_780x439.jpg', true, 'agarcia'),
