@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //pg-promise
-const db = require('./config')
+const db = require('./db')
 
 router.get('/', async (req, res) => {
     try {
@@ -33,12 +33,12 @@ router.post('/', async (req, res) => {
             WHERE email = '${email}' 
             AND user_password = '${user_password}'
         `)
-        if (user.session) {
+        if (!user) {
             res.status(500).json({error});
             return;
         }
         await db.none(`
-            INSERT INTO user_session(useridloggedin)
+            INSERT INTO user_session(id)
             VALUES(${user.id})
         `)
         let session = await db.any(`
