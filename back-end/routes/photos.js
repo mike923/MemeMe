@@ -4,11 +4,11 @@ const db = require('./db.js')
 const router = express.Router();
 
 
-/* GET users listing. */
-router.get('/', async (req, res, next) => {
+/* GET all photos listing. */
+router.get('/all', async (req, res, next) => {
   console.log('Getting all photos. Please standby')
   try{
-    const photos = await db.any('SELECT * FROM photos')
+    const photos = await db.any('SELECT * FROM photos WHERE active= true')
     res.json({
       payload: photos,
       message: 'Success photos received',
@@ -22,13 +22,18 @@ router.get('/', async (req, res, next) => {
     console.log('err',error)
   }
 });
+//GET all photos random for the feed
+// router.get('/feed', async (req, res, next) => {
 
-router.get('/:id', async (req, res, next) => {
-  console.log('Getting photo by id. Please standby')
+  
+// })
+
+router.get('/user/:poster_id', async (req, res, next) => {
+  console.log('Getting photo by poster id. Please standby')
  
-  const {id} = req.params
+  const {poster_id} = req.params
   try{
-    const photos = await db.one(`SELECT * FROM photos WHERE id = $1`, [id])
+    const photos = await db.any(`SELECT * FROM photos WHERE poster_id = $1 AND active = true`, [poster_id])
     res.json ({
       payload: photos,
       message: 'Success getting photo',
@@ -43,28 +48,47 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/', async(req, res, next) => {
-  const {poster_id, picture_url, date_posted} = req.body
-  const inputQuery = `INSERT INTO photos (poster_id, picture_url, date_posted, active) VALUES($1, $2, $3, $4)`
-  console.log('Adding photo', poster_id, picture_url, date_posted )
-  try {
-      await db.none(inputQuery, [poster_id, picture_url, date_posted, true])
-      res.json({
-          message:'Success. Photo posted',
-          payload: req.body,
-          success: true
-      })
+router.get('/caption/:caption_id', async (req, res, next) => {
+  console.log('Getting photo by caption_id')
+
+  const {caption_id} = req.params
+  try{
+    const photos = await db.any(`SELECT * FROM photos WHERE caption_id = $1 AND active = true`, [caption_id])
+    res.json({
+      payload: photos,
+      message: 'Success getting photo',
+      success: true
+    })
   } catch(error){
-      res.json({
-          message: 'Failed to add comment to post',
-          success: false
-      })
-      console.log(error)
+    res.json({
+      message: 'Error something went wrong',
+      success: false
+    })
   }
 })
 
+// router.post('/upload/:poster_id', async (req, res, next) => {
+//   const {poster_id} = req.params
+//   const {picture_url, date_posted} = req.body
+//   const inputQuery = `INSERT INTO photos (poster_id, picture_url, date_posted, active) VALUES($1, $2, $3, $4)`
+//   console.log('Adding photo', poster_id, picture_url, date_posted )
+//   try {
+//       await db.none(inputQuery, [poster_id, picture_url, date_posted, true])
+//       res.json({
+//           message:'Success. Photo posted',
+//           payload: req.body,
+//           success: true
+//       })
+//   } catch(error){
+//       res.json({
+//           message: 'Failed to add photo',
+//           success: false
+//       })
+//       console.log(error)
+//   }
+// })
 
-router.patch('/:id', async (req, res, next) => {
+router.patch('/deactivate/:id', async (req, res, next) => {
   console.log('Inactivating photo by id. Please standby')
   const {id} = req.params
   const {active} = req.body
