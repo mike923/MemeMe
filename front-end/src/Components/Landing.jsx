@@ -23,7 +23,8 @@ class Landing extends Component {
         let loginURL = 'http://localhost:3001/sessions'
         try {
             let response = await axios.post(loginURL, { email: this.state.email, user_password: this.state.password })
-            console.log(response)
+      
+           
         } catch (error) {
             console.log(error, 'axios not working')
         }
@@ -32,7 +33,8 @@ class Landing extends Component {
 
     // handleInput is the function responsible for updating the state everytime user presses a key
     handleInput = ({ target: { id, value } }) => this.setState({ [id]: value })
-
+  
+    
 
     render() {
         let {
@@ -43,7 +45,7 @@ class Landing extends Component {
             submitForm,
             handleInput,
         } = this
-
+       
         return (
             <form onSubmit={this.submitForm}>
                 <h2>Landing page</h2>

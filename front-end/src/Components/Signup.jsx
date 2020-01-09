@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Axios from 'axios'
 
 class Signup extends Component {
     constructor() {
@@ -14,16 +15,33 @@ class Signup extends Component {
     }
 
     // submitForm is the function used to handle the onSubmit event for the form in the render 
-    submitForm = (event) => {
+    submitForm = async (event) => {
         event.preventDefault();
 
         console.log(event.target)
         console.log(this.state)
         console.log('here would go our network request to create a new user')
+
+        let signupURL = 'http://localhost:3001/users/signup'
+        let {bio,email,password,fullName,username} = this.state
+
+        
+       
+        let response = await Axios.post(signupURL, {body: 
+            bio, email, password, fullName,username})
+   
+        try {
+
+            console.log(response)
+        } catch (error) {
+            console.log(error)
+        }
+
+
     }
 
     // handleInput is the function responsible for updating the state everytime user presses a key
-    handleInput = ({target: {id, value}}) => this.setState({ [id]: value })
+    handleInput = ({ target: { id, value } }) => this.setState({ [id]: value })
 
     render() {
         let {
@@ -31,27 +49,27 @@ class Signup extends Component {
                 bio,
                 email,
                 password,
-                fullName, 
-                username, 
+                fullName,
+                username,
             },
             submitForm,
             handleInput,
         } = this
 
-        return(
+        return (
             <form onSubmit={submitForm}>
                 <h1>Sign-Up for Meme Me</h1>
-                <label for="email">email: </label>
-                <input 
+                <label htmlFor="email">email: </label>
+                <input
                     id="email"
                     type="email"
                     name="email"
                     value={email}
                     onChange={handleInput}
                     placeholder="email@domain.org"
-                /><br/>
-                <label for="username">username: </label>
-                <input 
+                /><br />
+                <label htmlFor="username">username: </label>
+                <input
                     id="username"
                     type="text"
                     name="username"
@@ -59,34 +77,34 @@ class Signup extends Component {
                     // pattern=
                     onChange={handleInput}
                     placeholder="username"
-                /><br/>
-                <label for="password">password: </label>
-                <input 
+                /><br />
+                <label htmlFor="password">password: </label>
+                <input
                     id="password"
                     type="password"
                     name="password"
                     value={password}
                     onChange={handleInput}
                     placeholder="password"
-                /><br/>
-                <label for="fullName">full name: </label>
-                <input 
+                /><br />
+                <label htmlFor="fullName">full name: </label>
+                <input
                     id="fullName"
                     type="text"
                     name="fullName"
                     value={fullName}
                     onChange={handleInput}
                     placeholder="Name"
-                /><br/>
-                <label for="bio">bio: </label>
-                <input 
+                /><br />
+                <label htmlFor="bio">bio: </label>
+                <input
                     id="bio"
                     type="text"
                     name="bio"
                     value={bio}
                     onChange={handleInput}
                     placeholder="Tell us about yourself"
-                /><br/>
+                /><br />
                 <button type="submit">Sign Up</button>
             </form>
         )
