@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const db = require("./db");
 
-router.get("/", async (req, res) => {
+router.get("/active", async (req, res) => {
   try {
     let likes = await db.any(
-      `SELECT * FROM likes`
+      `SELECT * FROM likes
+      WHERE active = true`
     );
     res.json({
       data: likes
