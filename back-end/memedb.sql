@@ -42,9 +42,9 @@ CREATE TABLE likes (
     active BOOLEAN
 );
 
-CREATE TABLE user_session{
+CREATE TABLE user_session (
     id INT REFERENCE users (id)
-}
+);
 
 INSERT INTO users (email, firstname, displayname, bio, profilePic, active, user_passowrd)
 VALUES 
