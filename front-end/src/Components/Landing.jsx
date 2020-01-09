@@ -23,7 +23,17 @@ class Landing extends Component {
         let loginURL = 'http://localhost:3001/users/all/active'
        try {
         let response = await axios.get(loginURL)
-        console.log(response)
+       let payload = response.data.payload
+       console.log(payload)
+       for (let i =0; i < payload.length; i++){
+           let current = payload[i]
+           if (current.email === this.state.email && current.user_passowrd === this.state.password){
+               console.log('yay')
+           } else{
+               console.log('nah')
+           }
+       }
+
        } catch (error){
            console.log(error, 'axios not working')
        }
