@@ -12,16 +12,21 @@ router.post('/signup', async  (req, res) => {
     `
 
     let payload = {
-        email, user_password, firstname, displayname, bio, profilePic, active
+        email, user_password, firstname, displayname, bio,
     } = req.body
-    
+    payload.active = true
+    payload.profilePic = 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png'
+    console.log(payload, req.body)
     try {
         await db.none(insertstuff, payload)
+        let {id} = await db.one(`SELECT id FROM users WHERE email = '${email}'`)
         res.json({
             message: 'succesfully added user',
+            id,
             user: payload,
         })
     } catch (error) {
+        console.log(error)
         res.json({
             message: 'there was an error registering user',
             error
