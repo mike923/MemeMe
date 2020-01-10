@@ -7,104 +7,99 @@ class Signup extends Component {
         this.initialState = {
             bio: '',
             email: '',
-            password: '',
-            fullName: '',
-            username: '',
+            firstname: '',
+            displayname: '',
+            user_password: '',
         }
         this.state = this.initialState
     }
 
     // submitForm is the function used to handle the onSubmit event for the form in the render 
     submitForm = async (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
 
-        console.log(event.target)
-        console.log(this.state)
-        console.log('here would go our network request to create a new user')
-
-        let signupURL = 'http://localhost:3001/users/signup'
-        let {bio,email,password,fullName,username} = this.state
-
+        let {bio, email, firstname, displayname, user_password} = this.state
+        let payload = {
+            bio, 
+            email, 
+            firstname, 
+            displayname, 
+            user_password,
+        }
         
-       
-        let response = await Axios.post(signupURL, {body: 
-            bio, email, password, fullName,username})
-   
         try {
-
-            console.log(response)
-        } catch (error) {
+            let {data} = await Axios.post('http://localhost:3001/users/signup', payload)
+            console.log(data)
+        } catch(error) {
             console.log(error)
         }
-
-
     }
 
     // handleInput is the function responsible for updating the state everytime user presses a key
-    handleInput = ({ target: { id, value } }) => this.setState({ [id]: value })
+    handleInput = ({target: {name, value}}) => this.setState({ [name]: value })
 
     render() {
         let {
             state: {
                 bio,
                 email,
-                password,
-                fullName,
-                username,
+                firstname, 
+                displayname, 
+                user_password,
             },
             submitForm,
             handleInput,
         } = this
 
-        return (
+        return(
             <form onSubmit={submitForm}>
                 <h1>Sign-Up for Meme Me</h1>
                 <label htmlFor="email">email: </label>
-                <input
+                <input 
                     id="email"
                     type="email"
                     name="email"
                     value={email}
                     onChange={handleInput}
                     placeholder="email@domain.org"
-                /><br />
-                <label htmlFor="username">username: </label>
-                <input
-                    id="username"
+                /><br/>
+                <label htmlFor="displayname">displayname: </label>
+                <input 
+                    id="displayname"
                     type="text"
-                    name="username"
-                    value={username}
+                    name="displayname"
+                    value={displayname}
                     // pattern=
                     onChange={handleInput}
-                    placeholder="username"
-                /><br />
-                <label htmlFor="password">password: </label>
-                <input
-                    id="password"
+                    placeholder="displayname"
+                /><br/>
+                <label htmlFor="user_password">password: </label>
+                <input 
+                    id="user_password"
                     type="password"
-                    name="password"
-                    value={password}
+                    name="user_password"
+                    value={user_password}
                     onChange={handleInput}
                     placeholder="password"
-                /><br />
-                <label htmlFor="fullName">full name: </label>
-                <input
-                    id="fullName"
+                /><br/>
+                <label htmlFor="firstname">full name: </label>
+                <input 
+                    id="firstname"
                     type="text"
-                    name="fullName"
-                    value={fullName}
+                    name="firstname"
+                    value={firstname}
                     onChange={handleInput}
                     placeholder="Name"
-                /><br />
+                /><br/>
                 <label htmlFor="bio">bio: </label>
-                <input
+                <input 
                     id="bio"
                     type="text"
                     name="bio"
                     value={bio}
                     onChange={handleInput}
                     placeholder="Tell us about yourself"
-                /><br />
+                /><br/>
                 <button type="submit">Sign Up</button>
             </form>
         )
