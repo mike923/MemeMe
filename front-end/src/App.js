@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom'
 import Signup from './Components/Signup'
 import Landing from './Components/Landing'
+// import PhotoUpload from './Components/PhotoUpload'
 import './App.css';
 
 
@@ -45,6 +46,8 @@ class App extends Component {
                     <Route path="/" component={Signup} />
                 </Switch>
                 {/* <Signup /> */}
+                {/* <br></br>
+                <PhotoUpload /> */}
             </div>
         );
     }
