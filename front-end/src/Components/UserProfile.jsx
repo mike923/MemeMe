@@ -18,11 +18,20 @@ class UserProfile extends Component {
 
     componentDidMount = async (id = 2) => {
         let {data: {user}} = await axios.get(`http://localhost:3001/users/${id}`)
+        let {data: {payload}} = await axios.get(`http://localhost:3001/photos/user/${id}`)
         console.log(user)
+        console.log(payload)
+        // await this.getPhotos()
         this.setState(user)
     }
 
-
+    // getPhotos = async (id = 2) => {
+    //     console.log(id)
+    //     // this.setState({
+    //     //     id: 2
+    //     // })
+    // }
+    
     render() {
         let {
             state: {

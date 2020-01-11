@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class UserProfile extends Component {
+class Feed extends Component {
     constructor() {
         super()
         this.initialState = {
@@ -62,4 +62,4 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile
+export default Feed

@@ -49,7 +49,7 @@ CREATE TABLE user_session (
 INSERT INTO users (email, firstname, displayname, bio, profilePic, active, user_password)
 VALUES 
     ('aransagarcia@pursuit.org', 'aransa', 'a_garcia', 'yert im fron the bronx', 'https://i.vimeocdn.com/video/353648146_780x439.jpg', true, 'agarcia'),
-    ('owenjones@pursuit.org', 'owne', 'o_jones', 'yert im from brooklyn', 'https://media.licdn.com/dms/image/C4E03AQFJFRKW5QbJEg/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=T9WMAksTCK6XfMEXTlN0ZnUPsSamoOX_yYEENzOaVdk', true, 'ojones'),
+    ('owenjones@pursuit.org', 'owen', 'o_jones', 'yert im from brooklyn', 'https://media.licdn.com/dms/image/C4E03AQFJFRKW5QbJEg/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=T9WMAksTCK6XfMEXTlN0ZnUPsSamoOX_yYEENzOaVdk', true, 'ojones'),
     ('maliqtaylor@pursuit.org', 'maliq', 'm_taylor', 'yert im fron the BROOKLYN we go hard', 'https://media.licdn.com/dms/image/C4D03AQHKGTVYMBEsVw/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=x7R2_fYfMFvSG4DCcVq1tu37pE36Gwigo0edPd21WaI', true, 'mtaylor'),
     ('michaelamparo@pursuit.org', 'michael', 'm_amparo', 'yert im from manhattan', 'https://media.licdn.com/dms/image/C4D03AQFDnN-7lYz5PA/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=nl8aaWD6mPNfb9rtemx79O8RT7MJWRhn5xFBZ9p_plA', true, 'mamparo');
 
