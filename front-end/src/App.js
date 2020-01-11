@@ -4,6 +4,7 @@ import Signup from './Components/Signup'
 import Feed from './Components/Feed'
 import UserProfile from './Components/UserProfile'
 import Landing from './Components/Landing'
+// import PhotoUpload from './Components/PhotoUpload'
 import './App.css';
 
 
@@ -38,7 +39,9 @@ class App extends Component {
                     <Route path="/signup" component={Signup} />
                     <Route path="/feed" component={Feed} />
                     <Route path="/user" component={UserProfile} />
+                    <Route path="/photo/upload" render={(props) => <PhotoUpload />} />
                 </Switch>
+
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
+
 class Signup extends Component {
     constructor() {
         super()
@@ -52,6 +53,7 @@ class Signup extends Component {
         } = this
 
         return(
+            
             <form onSubmit={submitForm}>
                 <h1>Sign-Up for Meme Me</h1>
                 <label htmlFor="email">email: </label>
@@ -102,6 +104,7 @@ class Signup extends Component {
                 /><br/>
                 <button type="submit">Sign Up</button>
             </form>
+
         )
     }
 }
