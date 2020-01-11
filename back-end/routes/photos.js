@@ -25,6 +25,10 @@ router.get('/all', async (req, res, next) => {
 //GET all photos random for the feed
 // router.get('/feed', async (req, res, next) => {
 
+router.get('/random', async (req, res) => {
+  
+})
+
   
 // })
 
