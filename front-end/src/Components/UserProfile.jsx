@@ -3,10 +3,10 @@ import axios from 'axios'
 
 
 class UserProfile extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.initialState = {
-            id: 1,
+            id: this.props.userIdLoggedIn,
             bio: 'this is my bio its not much but it will be soon.',
             firstname: 'firstname',
             displayname: 'displayname',
@@ -16,7 +16,9 @@ class UserProfile extends Component {
         this.state = this.initialState
     }
 
-    componentDidMount = async (id = 2) => {
+
+    componentDidMount = async () => {
+        let {id} = this.state
         let {data: {user}} = await axios.get(`http://localhost:3001/users/${id}`)
         let {data: {payload}} = await axios.get(`http://localhost:3001/photos/user/${id}`)
         console.log(user)

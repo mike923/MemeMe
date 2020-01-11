@@ -35,7 +35,7 @@ class Signup extends Component {
             let {data} = await Axios.post('http://localhost:3001/users/signup', payload)
             console.log(data)
 
-           console.log(this.props.userIdLoggedIn)
+           
           
           
            console.log('user id', data.id)

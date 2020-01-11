@@ -40,7 +40,7 @@ class App extends Component {
                     >feed</Link><br/>
                     <Link 
                         to="/photocomp"
-                    >feed</Link><br/>
+                    >photo</Link><br/>
                     <Link 
                         to="/photos/upload"
                     >upload</Link><br/>
