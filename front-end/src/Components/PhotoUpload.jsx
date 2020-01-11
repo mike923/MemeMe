@@ -12,7 +12,7 @@ class PhotoUpload extends React.Component {
     }  
 
     handleUserProfile = (event) => {
-        
+
     }
     handleFileInput = (event) => {
         console.log('file changed')
@@ -27,8 +27,8 @@ class PhotoUpload extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         try{
-            const response = await axios.post('http://localhost:3001/photos/upload)
-        }catch(error){
+            const response = await axios.post('http://localhost:3001/photos/upload')
+        } catch(error) {
             console.log('err', error)
         }
     }
