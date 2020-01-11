@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 
 
+
 class Signup extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.initialState = {
             bio: '',
             email: '',
@@ -14,6 +15,8 @@ class Signup extends Component {
         }
         this.state = this.initialState
     }
+
+    changeID = this.props.changeID
 
     // submitForm is the function used to handle the onSubmit event for the form in the render 
     submitForm = async (event) => {
@@ -31,15 +34,30 @@ class Signup extends Component {
         try {
             let {data} = await Axios.post('http://localhost:3001/users/signup', payload)
             console.log(data)
+
+           
+          
+          
+           console.log('user id', data.id)
+           
+              this.changeID(data.id)
+           //    this.props.changeID = (id) => this.setState({userIdLoggedIn:id})
+
+         
         } catch(error) {
             console.log(error)
         }
     }
 
+
+  
+
     // handleInput is the function responsible for updating the state everytime user presses a key
     handleInput = ({target: {name, value}}) => this.setState({ [name]: value })
 
     render() {
+    
+      
         let {
             state: {
                 bio,

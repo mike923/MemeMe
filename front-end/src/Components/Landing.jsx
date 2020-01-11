@@ -4,26 +4,26 @@ import axios from 'axios'
 
 
 class Landing extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             email: '',
             password: '',
         }
     }
 
+    changeID = this.props.changeID
+
     // submitForm is the function used to handle the onSubmit event for the form in the render 
     submitForm = async (event) => {
         event.preventDefault();
 
-        console.log(event.target)
-        console.log(this.state)
-        console.log('here would go our network request to create a new user')
-
         let loginURL = 'http://localhost:3001/sessions'
         try {
             let response = await axios.post(loginURL, { email: this.state.email, user_password: this.state.password })
-      
+            console.log(response)
+            this.changeID(response.data.user.id)
+            // window.location.href = '/feed'
            
         } catch (error) {
             console.log(error, 'axios not working')
@@ -47,7 +47,7 @@ class Landing extends Component {
         } = this
        
         return (
-            <form onSubmit={this.submitForm}>
+            <form onSubmit={submitForm}>
                 <h2>Landing page</h2>
                 <label htmlFor="email">email: </label>
                 <input
