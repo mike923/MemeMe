@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom'
 import Signup from './Components/Signup'
+import Feed from './Components/Feed'
+import UserProfile from './Components/UserProfile'
 import Landing from './Components/Landing'
 // import PhotoUpload from './Components/PhotoUpload'
 import './App.css';
@@ -14,40 +16,32 @@ class App extends Component {
         }
     }
 
-    hideLink = () => {
-        this.setState({
-            hideLinks: true
-        })
-    }
-
     render() {
-        let {
-            state:{hideLinks},
-            hideLink,
-        } =    this
-
         return (
             <div className="App">
                 <h1>Welcome to Meme Me</h1>
                 <nav> 
                     <Link 
                         to="/login"
-                        // onClick={hideLink}
                     >login</Link><br/>
                     <Link 
                         to="/signup"
-                        // onClick={hideLink}
-                    >signup</Link>
+                    >signup</Link><br/>
+                    <Link 
+                        to="/feed"
+                    >feed</Link><br/>
+                    <Link 
+                        to="/user"
+                    >user</Link>
                 </nav>
                 <Switch>
                     <Route path="/login" component={Landing} />
                     <Route path="/signup" component={Signup} />
-                    <Route path="/" component={Signup} />
-                    <Route path="/" component={Signup} />
+                    <Route path="/feed" component={Feed} />
+                    <Route path="/user" component={UserProfile} />
+                    <Route path="/photo/upload" render={(props) => <PhotoUpload />} />
                 </Switch>
-                {/* <Signup /> */}
-                {/* <br></br>
-                <PhotoUpload /> */}
+
             </div>
         );
     }

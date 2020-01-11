@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Axios from 'axios'
 
 
 class Signup extends Component {
@@ -7,33 +8,45 @@ class Signup extends Component {
         this.initialState = {
             bio: '',
             email: '',
-            password: '',
-            fullName: '',
-            username: '',
+            firstname: '',
+            displayname: '',
+            user_password: '',
         }
         this.state = this.initialState
     }
 
     // submitForm is the function used to handle the onSubmit event for the form in the render 
-    submitForm = (event) => {
-        event.preventDefault();
+    submitForm = async (event) => {
+        event.preventDefault(); 
 
-        console.log(event.target)
-        console.log(this.state)
-        console.log('here would go our network request to create a new user')
+        let {bio, email, firstname, displayname, user_password} = this.state
+        let payload = {
+            bio, 
+            email, 
+            firstname, 
+            displayname, 
+            user_password,
+        }
+        
+        try {
+            let {data} = await Axios.post('http://localhost:3001/users/signup', payload)
+            console.log(data)
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     // handleInput is the function responsible for updating the state everytime user presses a key
-    handleInput = ({target: {id, value}}) => this.setState({ [id]: value })
+    handleInput = ({target: {name, value}}) => this.setState({ [name]: value })
 
     render() {
         let {
             state: {
                 bio,
                 email,
-                password,
-                fullName, 
-                username, 
+                firstname, 
+                displayname, 
+                user_password,
             },
             submitForm,
             handleInput,
@@ -43,7 +56,7 @@ class Signup extends Component {
             
             <form onSubmit={submitForm}>
                 <h1>Sign-Up for Meme Me</h1>
-                <label for="email">email: </label>
+                <label htmlFor="email">email: </label>
                 <input 
                     id="email"
                     type="email"
@@ -52,35 +65,35 @@ class Signup extends Component {
                     onChange={handleInput}
                     placeholder="email@domain.org"
                 /><br/>
-                <label for="username">username: </label>
+                <label htmlFor="displayname">displayname: </label>
                 <input 
-                    id="username"
+                    id="displayname"
                     type="text"
-                    name="username"
-                    value={username}
+                    name="displayname"
+                    value={displayname}
                     // pattern=
                     onChange={handleInput}
-                    placeholder="username"
+                    placeholder="displayname"
                 /><br/>
-                <label for="password">password: </label>
+                <label htmlFor="user_password">password: </label>
                 <input 
-                    id="password"
+                    id="user_password"
                     type="password"
-                    name="password"
-                    value={password}
+                    name="user_password"
+                    value={user_password}
                     onChange={handleInput}
                     placeholder="password"
                 /><br/>
-                <label for="fullName">full name: </label>
+                <label htmlFor="firstname">full name: </label>
                 <input 
-                    id="fullName"
+                    id="firstname"
                     type="text"
-                    name="fullName"
-                    value={fullName}
+                    name="firstname"
+                    value={firstname}
                     onChange={handleInput}
                     placeholder="Name"
                 /><br/>
-                <label for="bio">bio: </label>
+                <label htmlFor="bio">bio: </label>
                 <input 
                     id="bio"
                     type="text"
