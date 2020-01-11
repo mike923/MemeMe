@@ -23,7 +23,8 @@ class Landing extends Component {
         let loginURL = 'http://localhost:3001/sessions'
         try {
             let response = await axios.post(loginURL, { email: this.state.email, user_password: this.state.password })
-      
+            console.log(response)
+            window.location.href = '/feed'
            
         } catch (error) {
             console.log(error, 'axios not working')
@@ -47,7 +48,7 @@ class Landing extends Component {
         } = this
        
         return (
-            <form onSubmit={this.submitForm}>
+            <form onSubmit={submitForm}>
                 <h2>Landing page</h2>
                 <label htmlFor="email">email: </label>
                 <input
