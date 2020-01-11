@@ -5,7 +5,7 @@ import Feed from './Components/Feed'
 import UserProfile from './Components/UserProfile'
 import Landing from './Components/Landing'
 import PhotoUpload from './Components/PhotoUpload'
-// import Photo from './Components/Photo'
+import Photo from './Components/Photo'
 import './App.css';
 
 
@@ -53,9 +53,9 @@ class App extends Component {
                     <Route path="/login" 
                         render={() => <Landing changeID={changeID}/>} 
                     />
-                    {/* <Route path="/photocomp" 
+                    <Route path="/photocomp" 
                         render={() => <Photo userIdLoggedIn={userIdLoggedIn}/>} 
-                    /> */}
+                    />
                     <Route path="/user" 
                         render={() => <UserProfile userIdLoggedIn={userIdLoggedIn}/>} 
                     />                    
