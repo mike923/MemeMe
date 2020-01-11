@@ -5,18 +5,26 @@ import Feed from './Components/Feed'
 import UserProfile from './Components/UserProfile'
 import Landing from './Components/Landing'
 import PhotoUpload from './Components/PhotoUpload'
+// import Photo from './Components/Photo'
 import './App.css';
 
 
 class App extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            hideLinks: false
+            userIdLoggedIn: 0,
         }
     }
 
+    changeID = (id) => this.setState({userIdLoggedIn:id})
+    
+
     render() {
+        const {
+            state:{userIdLoggedIn},
+            changeID
+        } = this
         return (
             <div className="App">
                 <h1>Welcome to Meme Me</h1>
@@ -31,6 +39,9 @@ class App extends Component {
                         to="/feed"
                     >feed</Link><br/>
                     <Link 
+                        to="/photocomp"
+                    >feed</Link><br/>
+                    <Link 
                         to="/photos/upload"
                     >upload</Link><br/>
                     <Link 
@@ -38,11 +49,25 @@ class App extends Component {
                     >user</Link>
                 </nav>
                 <Switch>
-                    <Route path="/login" component={Landing} />
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/feed" component={Feed} />
-                    <Route path="/user" component={UserProfile} />
-                    <Route path="/photos/upload" render={(props) => <PhotoUpload />} />
+                    
+                    <Route path="/login" 
+                        render={() => <Landing changeID={changeID}/>} 
+                    />
+                    {/* <Route path="/photocomp" 
+                        render={() => <Photo userIdLoggedIn={userIdLoggedIn}/>} 
+                    /> */}
+                    <Route path="/user" 
+                        render={() => <UserProfile userIdLoggedIn={userIdLoggedIn}/>} 
+                    />                    
+                    <Route path="/signup" 
+                        render={() => <Signup changeID={changeID}/>}
+                    />
+                    <Route path="/feed" 
+                        render={()=> <Feed userIdLoggedIn={userIdLoggedIn}/>} 
+                    /> 
+                    <Route path="/photos/upload" 
+                        render={() => <PhotoUpload userIdLoggedIn={userIdLoggedIn} />} 
+                    />
                 </Switch>
 
             </div>
