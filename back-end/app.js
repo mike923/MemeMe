@@ -42,12 +42,12 @@ app.post('/photos/upload/:poster_id', upload.single('imgURL'), async (req, res, 
     console.log('req file', req.file)
      
     const {poster_id} = req.params
-    const {date_posted} = req.body
-    const inputQuery = `INSERT INTO photos (poster_id, picture_url, date_posted, active) VALUES ($1, $2, $3, $4)`
+    // const {date_posted} = req.body
+    const inputQuery = `INSERT INTO photos (poster_id, picture_url, active) VALUES ($1, $2, $3)`
     let imgURL = 'http://localhost:3001/' + req.file.path.replace('public/', '')
 
     try {
-        await db.none(inputQuery, [poster_id, imgURL, date_posted, true])
+        await db.none(inputQuery, [poster_id, imgURL, true])
         res.json({
             message: 'Success. Photo uploaded',
             payload: req.body,
