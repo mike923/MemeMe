@@ -21,7 +21,7 @@ CREATE TABLE photos (
     id SERIAL PRIMARY KEY,
     poster_id INT REFERENCES users (id),
     picture_url VARCHAR, 
-    date_posted VARCHAR,
+    date_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     active BOOLEAN 
 );
 
@@ -53,16 +53,16 @@ VALUES
     ('maliqtaylor@pursuit.org', 'maliq', 'm_taylor', 'yert im fron the BROOKLYN we go hard', 'https://media.licdn.com/dms/image/C4D03AQHKGTVYMBEsVw/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=x7R2_fYfMFvSG4DCcVq1tu37pE36Gwigo0edPd21WaI', true, 'mtaylor'),
     ('michaelamparo@pursuit.org', 'michael', 'm_amparo', 'yert im from manhattan', 'https://media.licdn.com/dms/image/C4D03AQFDnN-7lYz5PA/profile-displayphoto-shrink_200_200/0?e=1583971200&v=beta&t=nl8aaWD6mPNfb9rtemx79O8RT7MJWRhn5xFBZ9p_plA', true, 'mamparo');
 
-INSERT INTO photos (poster_id, picture_url, date_posted, active)
+INSERT INTO photos (poster_id, picture_url, active)
 VALUES 
-    (1, 'https://i.kym-cdn.com/photos/images/newsfeed/001/248/399/430.png', '01/01/2020', true),
-    (2, 'https://imgflip.com/s/meme/Drake-Hotline-Bling.jpg', '01/04/2020', true),
-    (3, 'https://image.businessinsider.com/56e3189152bcd0320c8b5cf7?width=1100&format=jpeg&auto=webp', '01/04/2020', true),
-    (4, 'https://static.vibe.com/files/2017/02/Roll-Safe-1485964928-compressed.jpg', '01/06/2020', true),
-    (1, 'https://media.npr.org/assets/img/2016/03/29/ap_090911089838_sq-3271237f28995f6530d9634ff27228cae88e3440-s800-c85.jpg', '01/07/2020', true),
-    (2, 'https://cdn.vox-cdn.com/thumbor/F1amWkSpCu_1dFRdKkIX2oXDIB8=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/14253063/Screen_Shot_2019_02_22_at_3.13.37_PM.png', '01/07/2020', true),
-    (3, 'https://cdn.livekindly.co/wp-content/uploads/2019/10/vegan-plant-based-news-meme14-1-Cropped.jpg', '01/08/2020', true),
-    (4, 'https://imgflip.com/s/meme/Black-Girl-Wat.jpg', '01/09/2020', true);
+    (1, 'https://i.kym-cdn.com/photos/images/newsfeed/001/248/399/430.png', true),
+    (2, 'https://imgflip.com/s/meme/Drake-Hotline-Bling.jpg', true),
+    (3, 'https://image.businessinsider.com/56e3189152bcd0320c8b5cf7?width=1100&format=jpeg&auto=webp', true),
+    (4, 'https://static.vibe.com/files/2017/02/Roll-Safe-1485964928-compressed.jpg', true),
+    (1, 'https://media.npr.org/assets/img/2016/03/29/ap_090911089838_sq-3271237f28995f6530d9634ff27228cae88e3440-s800-c85.jpg', true),
+    (2, 'https://cdn.vox-cdn.com/thumbor/F1amWkSpCu_1dFRdKkIX2oXDIB8=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/14253063/Screen_Shot_2019_02_22_at_3.13.37_PM.png', true),
+    (3, 'https://cdn.livekindly.co/wp-content/uploads/2019/10/vegan-plant-based-news-meme14-1-Cropped.jpg', true),
+    (4, 'https://imgflip.com/s/meme/Black-Girl-Wat.jpg', true);
 
 INSERT INTO captions (photo_id, commenter_id, body, active)
 VALUES 
