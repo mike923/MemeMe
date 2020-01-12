@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -12,13 +13,13 @@ class Signup extends Component {
             firstname: '',
             displayname: '',
             user_password: '',
+            redirect: false,
         }
         this.state = this.initialState
     }
 
     changeID = this.props.changeID
 
-    // submitForm is the function used to handle the onSubmit event for the form in the render 
     submitForm = async (event) => {
         event.preventDefault(); 
 
@@ -34,19 +35,14 @@ class Signup extends Component {
         try {
             let {data} = await Axios.post('http://localhost:3001/users/signup', payload)
             console.log(data)
-
-           
-          
-          
-           console.log('user id', data.id)
-           
-              this.changeID(data.id)
-           //    this.props.changeID = (id) => this.setState({userIdLoggedIn:id})
-
-         
+            console.log('user id', data.id)
+            this.changeID(data.id)
+            this.setState({redirect:true})
         } catch(error) {
             console.log(error)
         }
+
+        
     }
 
 
@@ -56,8 +52,7 @@ class Signup extends Component {
     handleInput = ({target: {name, value}}) => this.setState({ [name]: value })
 
     render() {
-    
-      
+        
         let {
             state: {
                 bio,
@@ -65,11 +60,13 @@ class Signup extends Component {
                 firstname, 
                 displayname, 
                 user_password,
+                redirect
             },
             submitForm,
             handleInput,
         } = this
-
+        
+        if (redirect) return(<Redirect to='/feed'/>)
         return(
             
             <form onSubmit={submitForm}>

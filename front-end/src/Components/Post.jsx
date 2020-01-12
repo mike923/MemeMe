@@ -16,8 +16,8 @@ class Post extends Component {
         return(
             <div>
                 <SlideShow />
-                <CaptionsSection />
                 <InputCaption />
+                <CaptionsSection />
             </div>
         )
     }
