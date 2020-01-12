@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom'
 import Signup from './Components/Signup'
 import Feed from './Components/Feed'
+import Post from './Components/Post'
 import UserProfile from './Components/UserProfile'
 import Landing from './Components/Landing'
 import PhotoUpload from './Components/PhotoUpload'
@@ -28,28 +29,20 @@ class App extends Component {
             <div className="App">
                 <h1>Welcome to Meme Me</h1>
                 <nav> 
-                    <Link 
-                        to="/login"
-                    >login</Link><br/>
-                    <Link 
-                        to="/signup"
-                    >signup</Link><br/>
-                    <Link 
-                        to="/feed"
-                    >feed</Link><br/>
-                    <Link 
-                        to="/photocomp"
-                    >photo</Link><br/>
-                    <Link 
-                        to="/photos/upload"
-                    >upload</Link><br/>
-                    <Link 
-                        to="/user"
-                    >user</Link>
+                    <Link to="/login">login</Link><br/>
+                    <Link to="/signup">signup</Link><br/>
+                    <Link to="/feed">feed</Link><br/>
+                    <Link to="/post">post</Link><br/>
+                    <Link to="/photocomp">photo</Link><br/>
+                    <Link to="/photos/upload">upload</Link><br/>
+                    <Link to="/user">user</Link>
                 </nav>
                 <Switch>
                     <Route path="/login" 
                         render={() => <Landing changeID={changeID}/>} 
+                    />
+                    <Route path="/post" 
+                        render={() => <Post userIdLoggedIn={userIdLoggedIn}/>} 
                     />
                     <Route path="/photocomp" 
                         render={() => <Photo userIdLoggedIn={userIdLoggedIn}/>} 
