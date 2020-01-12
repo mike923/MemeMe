@@ -12,7 +12,7 @@
     position: relative;
 }
 
-p {
+.p {
     position: absolute; 
     left: 0;
     right: 0; 
