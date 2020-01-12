@@ -60,7 +60,7 @@ class Feed extends Component {
             return (
                 <Photo
                     url={img.picture_url}
-                    caption={img.id}
+                    photo_id={img.id}
                     poster_id= {img.poster_id}
                     date_posted= {img.date_posted}
                 />
