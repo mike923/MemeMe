@@ -18,7 +18,6 @@ class App extends Component {
     }
 
     changeID = (id) => this.setState({userIdLoggedIn:id})
-    
 
     render() {
         const {
@@ -49,7 +48,6 @@ class App extends Component {
                     >user</Link>
                 </nav>
                 <Switch>
-                    
                     <Route path="/login" 
                         render={() => <Landing changeID={changeID}/>} 
                     />
