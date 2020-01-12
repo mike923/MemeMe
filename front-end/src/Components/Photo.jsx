@@ -7,7 +7,8 @@ class Photo extends Component {
         super(props)
         this.state = {
             url: this.props.url,
-            id: this.props.caption,
+            id: this.props.photo_id,
+            caption: 'loading...'
         }
     }
 
@@ -18,9 +19,16 @@ class Photo extends Component {
     componentDidMount = async () => {
         let {id} = this.state
         console.log(id)
-        let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
-        console.log(captions)
-        this.setState({caption: captions[0].body})
+        try {
+            let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
+            console.log(captions)
+            this.setState({caption: captions[0].body})
+        } catch(error) {
+            this.setState({
+                caption: ''
+            })
+            console.log(error)
+        }
     }
 
     render() {

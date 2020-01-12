@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Photo from '../Components/Photo.jsx'
 import axios from 'axios'
 
 
@@ -12,6 +13,7 @@ class UserProfile extends Component {
             displayname: 'displayname',
             profilepic: 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png',
             profilePicAlt: 'profile picture',
+            photos: []
         }
         this.state = this.initialState
     }
@@ -23,16 +25,22 @@ class UserProfile extends Component {
         let {data: {payload}} = await axios.get(`http://localhost:3001/photos/user/${id}`)
         console.log(user)
         console.log(payload)
-        // await this.getPhotos()
+        await this.getPhotos()
         this.setState(user)
     }
 
-    // getPhotos = async (id = 2) => {
-    //     console.log(id)
-    //     // this.setState({
-    //     //     id: 2
-    //     // })
-    // }
+    getPhotos = async () => {
+        let {data: {payload}} = await axios.get(`http://localhost:3001/photos/user/${this.state.id}`)
+        console.log(payload)
+        this.setState({
+            photos: payload 
+        })
+        
+        // console.log(id)
+        // this.setState({
+        //     id: 2
+        // })
+    }
     
     render() {
         let {
@@ -42,9 +50,21 @@ class UserProfile extends Component {
                 firstname,
                 profilePicAlt,
                 profilepic,
+                photos,
+                userPhotoArray,
             },
         } = this
-
+        // const userFeed = userPhotoArray.map(img => {
+        //     console.log(img)
+        //     return (
+        //         <Photo 
+        //             url={img.picture_url}
+        //             photo_id={img.id}
+        //             poster_id= {img.poster_id}
+        //             date_posted= {img.date_posted}
+        //         />
+        //     )
+        // })
         return(
             <div>
                 <div>
@@ -53,27 +73,12 @@ class UserProfile extends Component {
                     <h3>{firstname}</h3>
                     <p>{bio}</p>
                 </div>
+                
                 <div>
+                    
                     <h3>My photos go here</h3>
                     <div>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                    </div>
-                    <div>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                    </div>
-                    <div>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                    </div>
-                    <div>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
-                        <img src={profilepic} alt={profilePicAlt} height="150px"/>
+                        {photos.map((photo) => <Photo photo_id={photo.id} url={photo.picture_url} />)}
                     </div>
                 </div>
             </div>
