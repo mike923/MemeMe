@@ -8,7 +8,24 @@ const router = express.Router();
 router.get('/all', async (req, res, next) => {
   console.log('Getting all photos. Please standby')
   try{
-    const photos = await db.any('SELECT * FROM photos WHERE active= true')
+    let photos = await db.any('SELECT * FROM photos WHERE active= true')
+    // let photos = await db.any(`
+    // SELECT * 
+    // FROM captions 
+    // INNER JOIN photos
+    // ON photos.id = captions.photo_id
+    // `)
+    // photos = photos.map(async (photo) => {
+    //   photo.comments = await db.any(`
+    //     SELECT * 
+    //     FROM captions 
+    //     WHERE photo_id='${photo.id}'
+    //     AND active=true
+    //   `)
+    //   console.log('123412341234', photo)
+    //   // return photo
+    // })
+    // console.log('photos', photos)
     res.json({
       payload: photos,
       message: 'Success photos received',
