@@ -8,7 +8,6 @@ class PhotoUpload extends React.Component {
             user_id: 2,
             imageFile: null,
             imgURL: '',
-            // date_posted: new Date()
         }
     }  
 
