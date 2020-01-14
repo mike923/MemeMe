@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Route, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 
@@ -10,10 +10,11 @@ class Landing extends Component {
             email: '',
             password: '',
             redirect: false,
+            LoggedIn: false,
         }
     }
 
-    changeID = this.props.changeID
+    changeID = this.props.changeID;
 
     submitForm = async (event) => {
         event.preventDefault();
@@ -72,4 +73,4 @@ class Landing extends Component {
 }
 
 
-export default Landing
+export default Landing;

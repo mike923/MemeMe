@@ -39,15 +39,7 @@ router.get('/all', async (req, res, next) => {
     console.log('err',error)
   }
 });
-//GET all photos random for the feed
-// router.get('/feed', async (req, res, next) => {
 
-// router.get('/random', async (req, res) => {
-  
-// })
-
-  
-// })
 
 router.get('/user/:poster_id', async (req, res, next) => {
   console.log('Getting photo by poster id. Please standby')

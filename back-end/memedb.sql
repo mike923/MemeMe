@@ -67,7 +67,7 @@ VALUES
 INSERT INTO captions (photo_id, commenter_id, body, active)
 VALUES 
     (1, 1, 'ARANSA HERE FIRST POST', true),
-    (1, 2, 'OWEN HERE FIRST POST', true),
+    (1, 2, 'OWEN HERE FIRST POST CHECK', true),
     (1, 3, 'MALIQ HERE FIRST POST', true),
     (1, 4, 'MIKE HERE FIRST POST', true),
     (2, 1, 'ARANSA HERE SECOND POST', true),

@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import axios from "axios";
+import EditProfile from "./EditProfile";
+import { withRouter} from 'react-router-dom'
 import Photo from '../Components/Photo.jsx'
 import axios from 'axios'
 import { Link, Redirect } from 'react-router-dom'
@@ -19,7 +22,6 @@ class UserProfile extends Component {
         this.state = this.initialState
     }
     
-    
     componentDidMount = async () => {
         let {id} = this.state
         let {data: {user}} = await axios.get(`http://localhost:3001/users/${id}`)
@@ -38,6 +40,12 @@ class UserProfile extends Component {
             console.log('There was an error retieving user photos')
         }
     }
+    handleEdit = async  event => {
+        console.log(event.target.value, "pressing edit button");
+        this.props.history.push("/EditProfile");
+        //return <Redirect to="/EditProfile" />;
+    };
+
         
     render() {
         let {
@@ -60,6 +68,7 @@ class UserProfile extends Component {
                     <img src={profilepic} alt={profilePicAlt} height="150px"/>
                     <h3>{firstname}</h3>
                     <p>{bio}</p>
+                    <button onClick={this.handleEdit}> Edit Profile</button>
                 </div>
                 <div>
                     <h3>My photos go here</h3>
@@ -72,4 +81,4 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile
+export default withRouter(UserProfile);
