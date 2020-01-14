@@ -38,7 +38,7 @@ class Feed extends Component {
             },
         } = this
         const photoFeed = photoFeedArray.map(img => {
-            console.log('asdfasdfasdf', img.firstCaption)
+            
             return (
                 <Photo
                     url={img.picture_url}
