@@ -1,61 +1,63 @@
 import React, { Component } from 'react'
+import Photo from '../Components/Photo'
+import SearchBar from '../Components/SearchBar'
+import axios from 'axios'
 
 class Feed extends Component {
     constructor() {
         super()
         this.initialState = {
-            bio: 'this is my bio its not much but it will be soon.',
-            fullname: 'fullname',
-            username: 'username',
-            profilePicUrl: 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png',
-            profilePicAlt: 'profile picture',
+            profilePicAlt: 'filler',
+            photoFeedArray: []
         }
         this.state = this.initialState
     }
-
-
-
+    
+    componentDidMount = async () => {
+        let {data: {payload}} = await axios.get('http://localhost:3001/photos/all')
+        // const photos = response.data.payload
+        console.log(payload)
+        // let photos = payload.map(async (photo) => {
+        //     let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${photo.id}`)
+        //     console.log(captions[0].body)
+        //     photo.firstCaption = captions[0].body
+        //     console.log(photo)
+        //     return photo
+        // })
+        // console.log(photos)
+        this.setState({
+            photoFeedArray: payload
+        })
+    // this.buildPhotoArray(photos)
+    }
     render() {
         let {
             state: {
-                bio,
-                username,
-                fullname,
                 profilePicAlt,
-                profilePicUrl,
+                photoFeedArray
             },
         } = this
-
+        const photoFeed = photoFeedArray.map(img => {
+            console.log('asdfasdfasdf', img.firstCaption)
+            return (
+                <Photo
+                    url={img.picture_url}
+                    photo_id={img.id}
+                    poster_id= {img.poster_id}
+                    date_posted= {img.date_posted}
+                />
+            )
+        })
         return(
             <div>
+                <br></br>
                 <div>
-                    <h2>{username}</h2>
-                    <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                    <h3>{fullname}</h3>
-                    <p>{bio}</p>
+                    <SearchBar />
                 </div>
+                
+                <h3>Feed</h3>   
                 <div>
-                    <h3>My photos go here</h3>
-                    <div>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                    </div>
-                    <div>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                    </div>
-                    <div>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                    </div>
-                    <div>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                        <img src={profilePicUrl} alt={profilePicAlt} height="150px"/>
-                    </div>
+                    <ul>{photoFeed}</ul>
                 </div>
             </div>
         )

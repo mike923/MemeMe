@@ -5,11 +5,12 @@ import Feed from "./Components/Feed";
 import UserProfile from "./Components/UserProfile";
 import Landing from "./Components/Landing";
 import PhotoUpload from "./Components/PhotoUpload";
-// import Photo from './Components/Photo'
+import Photo from './Components/Photo'
 import "./App.css";
 import EditProfile from "./Components/EditProfile";
 import NavBar from "./Components/NavBar";
 import LogOut from './Components/LogOut'
+
 
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
       state: { userIdLoggedIn },
       changeID
     } = this;
+    
     return (
       <div className="App">
         <h1>Welcome to Meme Me</h1>
@@ -75,12 +77,9 @@ class App extends Component {
               render={() => <LogOut userIdLoggedIn={userIdLoggedIn}
               changeID={changeID} />}
             />
-            
-
           </Switch>
         ) : (
           <Switch>
-            {" "}
             <Route
               path="/login"
               render={() => <Landing changeID={changeID} />}

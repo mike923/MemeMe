@@ -44,12 +44,12 @@ router.get("/id/:caption_id", async (req, res, next) => {
   }
 });
 
-router.get("/search", async (req, res, next) => {
-  const search = req.body.search;
+router.get("/search/:text", async (req, res, next) => {
+  const text = req.params.text;
   try {
     let captions = await db.any(`
             SELECT * FROM captions
-            WHERE body like '%${search}%'
+            WHERE LOWER(body) LIKE '%${text}%'
         `);
     res.json({
       payload: captions
