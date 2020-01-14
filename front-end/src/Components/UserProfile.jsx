@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
-import EditProfile from "./EditProfile";
+import EnditProfile from "./EditProfile";
 import { withRouter} from 'react-router-dom'
 import Photo from '../Components/Photo.jsx'
 import axios from 'axios'

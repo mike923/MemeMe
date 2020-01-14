@@ -27,13 +27,21 @@ class SearchBar extends Component {
         } 
     }
 
+    grabImage = async (id) => {
+        try {
+
+        } catch(error) {
+
+        }
+    }
+
     searchResultNetworkRequest = async (e) => {
         e.preventDefault()
         const {searchValue} = this.state
             try{
-                const searchData = await axios.get(`http://localhost:3001/captions/search/${searchValue.toLowerCase()}`)
-                console.log(searchData)
-                return searchData
+                const {data:{payload}} = await axios.get(`http://localhost:3001/captions/search/${searchValue.toLowerCase()}`)
+                console.log(payload)
+                return payload
             } catch(error){ 
                 console.log('err', error)
             }
