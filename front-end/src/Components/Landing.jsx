@@ -23,8 +23,8 @@ class Landing extends Component {
         try {
             let response = await axios.post(loginURL, { email: this.state.email, user_password: this.state.password })
             console.log(response)
-            this.setState({redirect: true})
             this.changeID(response.data.user.id)
+            this.setState({redirect: true})
         } catch (error) {
             console.log(error, 'axios not working')
         }

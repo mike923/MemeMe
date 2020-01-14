@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { withRouter, Link, Redirect } from 'react-router-dom'
-import axios from 'axios'
+import EnditProfile from "./EditProfile";
+import { withRouter} from 'react-router-dom'
 import Photo from '../Components/Photo.jsx'
-// import EditProfile from "./EditProfile";
+import axios from 'axios'
+import { Link, Redirect } from 'react-router-dom'
 
 class UserProfile extends Component {
     constructor(props) {
