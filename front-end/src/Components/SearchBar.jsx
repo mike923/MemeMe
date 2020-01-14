@@ -18,24 +18,31 @@ class SearchBar extends Component {
     }
 
     handleSubmit = async (e) => {
+        const {searchValue} = this.state
+
+        if (searchValue.length > 0){
+            this.searchResultNetworkRequest()
+        } else{
+            console.log('nothing')
+        } 
+    }
+
+    searchResultNetworkRequest = async (e) => {
         e.preventDefault()
         const {searchValue} = this.state
-        if(searchValue.length > 0){
             try{
                 const searchData = await axios.get(`http://localhost:3001/captions/search/${searchValue.toLowerCase()}`)
                 console.log(searchData)
+                return searchData
             } catch(error){ 
                 console.log('err', error)
             }
-        } else {
-            console.log('Invalid search')
-        }
     }
     render(){
         const {user_id, searchValue} = this.state
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.searchResultNetworkRequest}>
                     <input type= 'search' value={searchValue} onChange={this.handleSearch}></input>
                 </form>
             </div>
@@ -43,6 +50,6 @@ class SearchBar extends Component {
         )
     }
 }
-
-
+    
+        
 export default SearchBar
