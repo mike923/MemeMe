@@ -3,9 +3,10 @@
 }
 
 .meme {
+    display: flex;
     margin: auto;
-    width: 450px;
-    height: 450px;
+    width: 90px;
+    height: 90px;
     /* background-image: url('http://vignette1.wikia.nocookie.net/meme/images/7/71/BusinessCat2.jpg'); */
     background-size: 100%; 
     text-align: center;
@@ -19,7 +20,7 @@
     margin: 15px 0;
     padding: 0 5px;
     font-family: impact;
-    font-size: 2.5em;
+    font-size: 12px;
     text-transform: uppercase;
     color: white;
     letter-spacing: 1px;

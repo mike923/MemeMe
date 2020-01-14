@@ -2,41 +2,34 @@ import React, { Component } from 'react'
 import Photo from '../Components/Photo'
 import SearchBar from '../Components/SearchBar'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 class Feed extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.initialState = {
             profilePicAlt: 'filler',
-            photoFeedArray: []
+            photoFeedArray: [],
+            loggedIn: this.props.userIdLoggedIn,
         }
         this.state = this.initialState
     }
     
     componentDidMount = async () => {
         let {data: {payload}} = await axios.get('http://localhost:3001/photos/all')
-        // const photos = response.data.payload
         console.log(payload)
-        // let photos = payload.map(async (photo) => {
-        //     let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${photo.id}`)
-        //     console.log(captions[0].body)
-        //     photo.firstCaption = captions[0].body
-        //     console.log(photo)
-        //     return photo
-        // })
-        // console.log(photos)
-        this.setState({
-            photoFeedArray: payload
-        })
-    // this.buildPhotoArray(photos)
+        this.setState({ photoFeedArray: payload })
     }
+
     render() {
         let {
             state: {
                 profilePicAlt,
-                photoFeedArray
+                photoFeedArray,
+                loggedIn,
             },
         } = this
+
         const photoFeed = photoFeedArray.map(img => {
             console.log('asdfasdfasdf', img.firstCaption)
             return (
@@ -48,13 +41,14 @@ class Feed extends Component {
                 />
             )
         })
+
+        if (!loggedIn) return(<Redirect to='/login' />)
         return(
             <div>
                 <br></br>
                 <div>
                     <SearchBar />
                 </div>
-                
                 <h3>Feed</h3>   
                 <div>
                     <ul>{photoFeed}</ul>
