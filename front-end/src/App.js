@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom'
-import Signup from './Components/Signup'
+import axios from 'axios'
 import Feed from './Components/Feed'
 import Post from './Components/Post'
-import UserProfile from './Components/UserProfile'
-import Landing from './Components/Landing'
-import PhotoUpload from './Components/PhotoUpload'
+import Error from './Components/Error'
 import Photo from './Components/Photo'
+import Signup from './Components/Signup'
+import Landing from './Components/Landing'
+import UserProfile from './Components/UserProfile'
+import PhotoUpload from './Components/PhotoUpload'
 import './App.css';
 
 
@@ -16,6 +18,11 @@ class App extends Component {
         this.state = {
             userIdLoggedIn: 0,
         }
+    }
+
+    componentDidMount = async () => {
+        let {data:{session}} = await axios.get('http://localhost:3001/sessions/')
+        this.setState({userIdLoggedIn: session[0].id})
     }
 
     changeID = (id) => this.setState({userIdLoggedIn:id})
@@ -39,7 +46,7 @@ class App extends Component {
                 </nav>
                 <Switch>
                     <Route path="/login" 
-                        render={() => <Landing changeID={changeID}/>} 
+                        render={() => <Landing userIdLoggedIn={userIdLoggedIn} changeID={changeID}/>} 
                     />
                     <Route path="/post" 
                         render={() => <Post userIdLoggedIn={userIdLoggedIn}/>} 
@@ -51,13 +58,16 @@ class App extends Component {
                         render={() => <UserProfile userIdLoggedIn={userIdLoggedIn}/>} 
                     />                    
                     <Route path="/signup" 
-                        render={() => <Signup changeID={changeID}/>}
+                        render={() => <Signup userIdLoggedIn={userIdLoggedIn} changeID={changeID}/>}
                     />
                     <Route path="/feed" 
                         render={()=> <Feed userIdLoggedIn={userIdLoggedIn}/>} 
                     /> 
                     <Route path="/photos/upload" 
                         render={() => <PhotoUpload userIdLoggedIn={userIdLoggedIn} />} 
+                    />
+                    <Route path="*" 
+                        render={() => <Error />} 
                     />
                 </Switch>
 

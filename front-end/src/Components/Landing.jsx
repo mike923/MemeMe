@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 
@@ -9,12 +9,12 @@ class Landing extends Component {
         this.state = {
             email: '',
             password: '',
+            redirect: false,
         }
     }
 
     changeID = this.props.changeID
 
-    // submitForm is the function used to handle the onSubmit event for the form in the render 
     submitForm = async (event) => {
         event.preventDefault();
 
@@ -23,29 +23,26 @@ class Landing extends Component {
             let response = await axios.post(loginURL, { email: this.state.email, user_password: this.state.password })
             console.log(response)
             this.changeID(response.data.user.id)
-            // window.location.href = '/feed'
-           
+            this.setState({redirect: true})
         } catch (error) {
             console.log(error, 'axios not working')
         }
     }
 
-
-    // handleInput is the function responsible for updating the state everytime user presses a key
     handleInput = ({ target: { id, value } }) => this.setState({ [id]: value })
-  
-    
 
     render() {
         let {
             state: {
                 email,
                 password,
+                redirect,
             },
             submitForm,
             handleInput,
         } = this
-       
+
+        if (redirect) return <Redirect to='/feed' />
         return (
             <form onSubmit={submitForm}>
                 <h2>Landing page</h2>

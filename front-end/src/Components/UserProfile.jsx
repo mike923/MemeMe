@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Photo from '../Components/Photo.jsx'
 import axios from 'axios'
-
+import { Link, Redirect } from 'react-router-dom'
 
 class UserProfile extends Component {
     constructor(props) {
@@ -13,12 +13,13 @@ class UserProfile extends Component {
             displayname: 'displayname',
             profilepic: 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png',
             profilePicAlt: 'profile picture',
-            photos: []
+            photos: [],
+            loggedIn: this.props.userIdLoggedIn,
         }
         this.state = this.initialState
     }
-
-
+    
+    
     componentDidMount = async () => {
         let {id} = this.state
         let {data: {user}} = await axios.get(`http://localhost:3001/users/${id}`)
@@ -28,43 +29,30 @@ class UserProfile extends Component {
         await this.getPhotos()
         this.setState(user)
     }
-
-    getPhotos = async () => {
-        let {data: {payload}} = await axios.get(`http://localhost:3001/photos/user/${this.state.id}`)
-        console.log(payload)
-        this.setState({
-            photos: payload 
-        })
-        
-        // console.log(id)
-        // this.setState({
-        //     id: 2
-        // })
-    }
     
+    getPhotos = async () => {
+        try{
+            let {data: {payload}} = await axios.get(`http://localhost:3001/photos/user/${this.state.id}`)
+            this.setState({ photos: payload })
+        } catch(error) {
+            console.log('There was an error retieving user photos')
+        }
+    }
+        
     render() {
         let {
             state: {
                 bio,
-                displayname,
-                firstname,
-                profilePicAlt,
-                profilepic,
                 photos,
-                userPhotoArray,
+                loggedIn,
+                firstname,
+                profilepic,
+                displayname,
+                profilePicAlt,
             },
         } = this
-        // const userFeed = userPhotoArray.map(img => {
-        //     console.log(img)
-        //     return (
-        //         <Photo 
-        //             url={img.picture_url}
-        //             photo_id={img.id}
-        //             poster_id= {img.poster_id}
-        //             date_posted= {img.date_posted}
-        //         />
-        //     )
-        // })
+        
+        if (!loggedIn) return(<Redirect to='/login' />)
         return(
             <div>
                 <div>
@@ -73,9 +61,7 @@ class UserProfile extends Component {
                     <h3>{firstname}</h3>
                     <p>{bio}</p>
                 </div>
-                
                 <div>
-                    
                     <h3>My photos go here</h3>
                     <div>
                         {photos.map((photo) => <Photo photo_id={photo.id} url={photo.picture_url} />)}
