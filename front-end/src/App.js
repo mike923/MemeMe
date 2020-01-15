@@ -87,11 +87,14 @@ class App extends Component {
                         </Switch>
                     ) : (
                         <Switch>
+                            <Route path="/signup" 
+                                render={() => <Signup changeID={changeID}/>}
+                            />
                             <Route path="/login" 
                                 render={() => <Landing changeID={changeID}/>} 
                             />
-                            <Route path="/signup" 
-                                render={() => <Signup changeID={changeID}/>}
+                            <Route path="*" 
+                                render={() => <Landing changeID={changeID}/>} 
                             />
                         </Switch>
                     )
