@@ -66,32 +66,32 @@ class Signup extends Component {
         return(
             
             <form onSubmit={submitForm}>
-                <h1>Sign-Up for Meme Me</h1>
-                <label htmlFor="email">email: </label>
+                <h2>Sign-Up for Meme Me</h2>
+                {/* <label htmlFor="email">email: </label> */}
                 <input type="email" name="email" placeholder="email@domain.org"
                     value={email}
                     onChange={handleInput}
-                /><br/>
-                <label htmlFor="displayname">displayname: </label>
+                />
+                {/* <label htmlFor="displayname">displayname: </label> */}
                 <input type="text" name="displayname" placeholder="displayname"
                     value={displayname}
                     onChange={handleInput}
-                /><br/>
-                <label htmlFor="user_password">password: </label>
+                />
+                {/* <label htmlFor="user_password">password: </label> */}
                 <input type="password" name="user_password" placeholder="password"
                     value={user_password}
                     onChange={handleInput}
-                /><br/>
-                <label htmlFor="firstname">full name: </label>
+                />
+                {/* <label htmlFor="firstname">full name: </label> */}
                 <input type="text" name="firstname" placeholder="Name"
                     value={firstname}
                     onChange={handleInput}
-                /><br/>
-                <label htmlFor="bio">bio: </label>
-                <input type="text" name="bio" placeholder="Tell us about yourself"
+                />
+                {/* <label htmlFor="bio">bio: </label> */}
+                <textarea type="text" name="bio" placeholder="Tell us about yourself"
                     value={bio}
                     onChange={handleInput}
-                /><br/>
+                ></textarea>
                 <button type="submit">Sign Up</button>
             </form>
         )

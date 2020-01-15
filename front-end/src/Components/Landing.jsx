@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Route, Redirect } from 'react-router-dom'
 import axios from 'axios'
-
+import "../CSS/Landing.css";
 
 class Landing extends Component {
     constructor(props) {
@@ -45,9 +45,8 @@ class Landing extends Component {
 
         if (redirect) return <Redirect to='/feed' />
         return (
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitForm} className = 'box'>
                 <h2>Landing page</h2>
-                <label htmlFor="email">email: </label>
                 <input
                     id="email"
                     type="email"
@@ -55,8 +54,7 @@ class Landing extends Component {
                     value={email}
                     onChange={handleInput}
                     placeholder="email@domain.org"
-                /><br />
-                <label htmlFor="password">password: </label>
+                />
                 <input
                     id="password"
                     type="password"
@@ -64,9 +62,9 @@ class Landing extends Component {
                     value={password}
                     onChange={handleInput}
                     placeholder="password"
-                /><br />
-                <button type="submit">Log In</button><br /><br />
-                <Link to='./signup'>New to Meme Me?<br />Sign Up here.</Link>
+                />
+                <button type="submit">Log In</button>
+                <Link className='link' to='./signup'>New to Meme Me?<br />Sign Up here.</Link>
             </form>
         )
     }
