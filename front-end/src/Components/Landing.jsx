@@ -8,9 +8,10 @@ class Landing extends Component {
         super(props);
         this.state = {
             email: "",
-            password: "",
+            user_password: "",
             redirect: false,
-            LoggedIn: false
+            LoggedIn: false,
+            error: false
         };
     }
 
@@ -19,25 +20,22 @@ class Landing extends Component {
     submitForm = async event => {
         event.preventDefault();
 
-        let loginURL = "http://localhost:3001/sessions";
+        let {email, user_password} = this.state
         try {
-            let response = await axios.post(loginURL, {
-                email: this.state.email,
-                user_password: this.state.password
-            });
-            console.log(response);
-            this.changeID(response.data.user.id);
+            let {data: {user}} = await axios.post("http://localhost:3001/sessions", {email, user_password});
             this.setState({ redirect: true });
+            this.changeID(user.id);
         } catch (error) {
             console.log(error, "axios not working");
+            this.setState({ error: true });
         }
     };
 
-    handleInput = ({ target: { id, value } }) => this.setState({ [id]: value });
+    handleInput = ({ target: { name, value } }) => this.setState({ [name]: value });
 
     render() {
         let {
-            state: { email, password, redirect },
+            state: { email, user_password, redirect, error },
             submitForm,
             handleInput
         } = this;
@@ -47,8 +45,8 @@ class Landing extends Component {
         return (
             <form onSubmit={submitForm} className = 'box'>
                 <h2>Landing page</h2>
+                <h3 hidden={!error}>Username and password combination did not match anything in our system. <br/>Please try again.</h3>
                 <input
-                    id="email"
                     type="email"
                     name="email"
                     value={email}
@@ -56,10 +54,9 @@ class Landing extends Component {
                     placeholder="email@domain.org"
                 />
                 <input
-                    id="password"
                     type="password"
-                    name="password"
-                    value={password}
+                    name="user_password"
+                    value={user_password}
                     onChange={handleInput}
                     placeholder="password"
                 />
