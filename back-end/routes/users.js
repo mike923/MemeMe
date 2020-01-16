@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('./db')
 
-
 router.post('/signup', async  (req, res) => {
     let insertstuff = `
         INSERT INTO users 
@@ -14,6 +13,7 @@ router.post('/signup', async  (req, res) => {
     let payload = {
         email, user_password, firstname, displayname, bio,
     } = req.body
+    payload.email = email.toLowerCase()
     payload.active = true
     payload.profilePic = 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png'
     console.log(payload, req.body)
@@ -55,6 +55,7 @@ router.get('/:id', async(req, res, next) => {
 })
 
 router.patch('/:user_id', async (req, res) => {
+
     let setQuery = ''
     for (key in req.body) {
         let set = `${key} = '${req.body[key]}'`

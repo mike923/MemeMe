@@ -1,76 +1,75 @@
-import React, { Component } from 'react'
-import { Link, Route, Redirect } from 'react-router-dom'
-import axios from 'axios'
-
+import React, { Component } from "react";
+import { Link, Route, Redirect } from "react-router-dom";
+import axios from "axios";
+import "../CSS/Landing.css";
 
 class Landing extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            email: '',
-            password: '',
+            email: "",
+            user_password: "",
             redirect: false,
             LoggedIn: false,
-        }
+            error: false
+        };
     }
 
     changeID = this.props.changeID;
 
-    submitForm = async (event) => {
+    submitForm = async event => {
         event.preventDefault();
 
-        let loginURL = 'http://localhost:3001/sessions'
+        let {email, user_password} = this.state
         try {
-            let response = await axios.post(loginURL, { email: this.state.email, user_password: this.state.password })
-            console.log(response)
-            this.changeID(response.data.user.id)
-            this.setState({redirect: true})
+            let {data: {user}} = await axios.post("http://localhost:3001/sessions", {email, user_password});
+            this.setState({ redirect: true });
+            this.changeID(user.id);
         } catch (error) {
-            console.log(error, 'axios not working')
+            console.log(error, "axios not working");
+            this.setState({ error: true });
         }
-    }
+    };
 
-    handleInput = ({ target: { id, value } }) => this.setState({ [id]: value })
+    handleInput = ({ target: { name, value } }) => this.setState({ [name]: value });
 
     render() {
         let {
-            state: {
-                email,
-                password,
-                redirect,
-            },
+            state: { email, user_password, redirect, error },
             submitForm,
-            handleInput,
-        } = this
+            handleInput
+        } = this;
+
 
         if (redirect) return <Redirect to='/feed' />
         return (
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitForm} className = 'box'>
                 <h2>Landing page</h2>
-                <label htmlFor="email">email: </label>
+                <h3 hidden={!error}>Username and password combination did not match anything in our system. <br/>Please try again.</h3>
                 <input
-                    id="email"
                     type="email"
                     name="email"
                     value={email}
                     onChange={handleInput}
                     placeholder="email@domain.org"
-                /><br />
-                <label htmlFor="password">password: </label>
+                />
                 <input
-                    id="password"
                     type="password"
-                    name="password"
-                    value={password}
+                    name="user_password"
+                    value={user_password}
                     onChange={handleInput}
                     placeholder="password"
-                /><br />
-                <button type="submit">Log In</button><br /><br />
-                <Link to='./signup'>New to Meme Me?<br />Sign Up here.</Link>
+                />
+                <button type="submit">Log In</button>
+                <Link className='link' to='/signup'>
+                    New to Meme Me?
+                    <br />
+                    Sign Up here.
+                </Link>
             </form>
         )
     }
-}
 
+}
 
 export default Landing;

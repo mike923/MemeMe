@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: dodgerblue;
+    color: white;
+    background-image: url('../css-images/light-wool.png');
+}
+
+form, .box{
+    width: 370px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #191919;
+    text-align: center;
+    border-radius: 25px;
+}
+
+form h2, .box h2{
+    color: honeydew;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: #191919;
+
+}
+
+form textarea{
+    column-span: 200px;
+    resize: vertical;
+}
+
+.box input, .box input[type = "password"], form input, form textarea, form input[type = "password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid dodgerblue;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box input:focus, .box input[type = "password"]:focus, 
+form input:focus,form textarea:focus, form input[type = "password"]:focus
+{
+    width: 280px;
+    border-color: hotpink;
+}
+
+form button[type = 'submit'], .box button[type = 'submit']{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid hotpink;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box button[type = 'submit']:hover, form button[type = 'submit']:hover{
+    background: hotpink;
+}
+
+.box .link, form a{
+    color: white;
+    background: #191919;
+}

@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        let email = req.body.email
+        let email = req.body.email.toLowerCase()
         let user_password = req.body.user_password
         await db.none(`DELETE FROM user_session`)
         let user = await db.one(`
