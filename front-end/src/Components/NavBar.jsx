@@ -21,11 +21,6 @@ const NavBar = ({ loggedIn }) => {
   }
   return (
     <nav className="NavBar">
-      {" "}
-      <Link to="/login">login</Link>
-      <br />
-      <Link to="/signup">signup</Link>
-      <br />{" "}
     </nav>
   );
 };

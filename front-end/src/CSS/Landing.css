@@ -3,8 +3,8 @@
     padding: 0;
     font-family: sans-serif;
     background-color: dodgerblue;
-    background-image: url('../css-images/light-wool.png');
     color: white;
+    background-image: url('../css-images/light-wool.png');
 }
 
 form, .box{
