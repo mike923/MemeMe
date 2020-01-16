@@ -42,37 +42,37 @@ class Landing extends Component {
       handleInput
     } = this;
 
-    if (redirect) return <Redirect to="/feed" />;
-    return (
-      <div className="landing">
-        <form onSubmit={submitForm} className="box">
-          <h2>Landing page</h2>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleInput}
-            placeholder="email@domain.org"
-          />
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleInput}
-            placeholder="password"
-          />
-          <button type="submit">Log In</button>
-          <Link className="link" to="/signup">
-            New to Meme Me?
-            <br />
-            Sign Up here.
-          </Link>
-        </form>
-      </div>
-    );
-  }
+
+        if (redirect) return <Redirect to='/feed' />
+        return (
+            <form onSubmit={submitForm} className = 'box'>
+                <h2>Landing page</h2>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={handleInput}
+                    placeholder="email@domain.org"
+                />
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handleInput}
+                    placeholder="password"
+                />
+                <button type="submit">Log In</button>
+                <Link className='link' to='/signup'>
+                    New to Meme Me?
+                    <br />
+                    Sign Up here.
+                </Link>
+            </form>
+        )
+    }
+
 }
 
 export default Landing;

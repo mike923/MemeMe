@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
 
 class EditProfile extends Component {
     constructor(props) {
@@ -19,7 +19,6 @@ class EditProfile extends Component {
         this.state = this.initialState
     }
 
-
     componentDidMount = async () => {
         let { id } = this.state
         let { data: { user } } = await axios.get(`http://localhost:3001/users/${id}`)
@@ -30,151 +29,108 @@ class EditProfile extends Component {
         this.setState(user)
     }
 
-
-
-
-
-    handleTitleEdit = async (e) => {
-        this.setState({ editTitle: true })
+    handleFileInput = (event) => {
+        console.log('file changed')
+        // console.dir(event.target)
+        console.log(event.target.files[0])
+        this.setState ({
+            imageFile: event.target.files[0]
+        })
     }
 
-    changeName = async (e) => {
-        this.setState({ displayname: e.target.value })
-
-    }
-
-    handleDisplayname = async (e) => {
-        const { id, displayname } = this.state
+    handleSubmit = async (event) => {
+        event.preventDefault(); 
+        
+        let {id, bio, email, firstname, displayname, user_password} = this.state
+        let payload = {bio, email, firstname, displayname, user_password}
+        
         try {
-            let response = await axios.patch(`http://localhost:3001/users/${id}`, { displayname })
-            this.setState({
-                editTitle: false
-            })
-        } catch (error) {
+            let {data} = await axios.patch(`http://localhost:3001/users/${id}`, payload)
+            console.log(data)
+            console.log('user id', data.id)
+            // this.changeID(data.id)
+            this.setState({redirect:true})
+        } catch(error) {
             console.log(error)
+        }   
+        
+
+        const data = new FormData()
+        data.append('imgURL', this.state.imageFile)
+        console.log(data)
+        try{
+            const response = await axios.patch(`http://localhost:3001/users/upload/${id}`, data)
+            console.log(response.data)
+            this.setState ({ profilepic: response.data.payload, })
+        } catch(error) {
+            console.log('err', error)
         }
-
-    }
-
-    handlefirstnameEdit = async (e) => {
-        this.setState({ editfirstname: true })
-    }
-
-    changefirstname = async (e) => {
-        this.setState({ firstname: e.target.value })
-
-    }
-
-    handlefirstname = async (e) => {
-        const { id, firstname } = this.state
-        try {
-            let response = await axios.patch(`http://localhost:3001/users/${id}`, { firstname })
-            this.setState({
-                editfirstname: false
-            })
-        } catch (error) {
-            console.log(error)
-        }
-
     }
 
 
-    handleBioEdit = async (e) => {
-        this.setState({ editBio: true })
-    }
-
-    changeBio= async (e) => {
-        this.setState({ bio: e.target.value })
-
-    }
-
-    handleBio = async (e) => {
-        const { id, bio } = this.state
-        try {
-            let response = await axios.patch(`http://localhost:3001/users/${id}`, { bio })
-            this.setState({
-                editBio: false
-            })
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
-
-    DoneEditing = async  event => {
-        console.log(event.target.value, "pressing edit button");
-        // window.location.href= "/EditProfile"
-        this.props.history.push("/user");
-        //return <Redirect to="/EditProfile" />;
-      };
-    
-
+    handleInput = ({target: {name, value}}) => this.setState({ [name]: value })
 
     render() {
         const {
-            state: {
-                bio,
-                displayname,
-                firstname,
-                profilePicAlt,
-                profilepic,
-                editTitle,
-                editfirstname,
-                editBio
-            },
+            state: { 
+                bio, 
+                email, 
+                redirect, 
+                firstname, 
+                profilepic, 
+                displayname, 
+                user_password, 
+                profilePicAlt,},
+            handleInput,
+            handleSubmit,
+            handleFileInput,
         } = this
 
+        if (redirect) return (<Redirect to='/user' />)
         return (
-            <div>
-                <div>
-                    {editTitle ? <input value={displayname} onChange={this.changeName} /> :
-                        <h2>{displayname} </h2>
-                    }
-
-                    {editTitle ? <a onClick={this.handleDisplayname}> ✅</a> :
-                        <a href= '#' onClick={this.handleTitleEdit}>📝</a>
-                    }
-
-
-
-                    <img src={profilepic} alt={profilePicAlt} height="150px" />
-
-                    {editfirstname ? <input value={firstname} onChange={this.changefirstname} /> :
-                        <h2>{firstname} </h2>
-                    }
-
-                    {editfirstname ? <a onClick={this.handlefirstname}> ✅ </a> :
-                        <a href ='#' onClick={this.handlefirstnameEdit}>📝</a>
-                    }
-
-                    {editBio ? <input value={bio} onChange={this.changeBio} /> :
-                        <p>{bio} </p>
-                    }
-
-                    {editBio ? <a onClick={this.handleBio}> ✅ </a> :
-                        <a href ='#' onClick={this.handleBioEdit}>📝</a>
-                    }
-
-
-
-
-
-
-
-
-                    <button onClick={this.DoneEditing}> Done Editing</button>
-                    <form onSubmit={this.handleSubmit} >
-                        <input type='file' onChange={this.handleFileInput} />
-                        <input type='submit' value='Upload' />
-                    </form>
-                </div>
-                <div>
-
-
-                </div>
-            </div>
+            <form onSubmit={handleSubmit}>
+                <img src={profilepic} alt={profilePicAlt} height="150px" />
+                <input 
+                    onChange={handleInput} 
+                    type='text' 
+                    name="email" 
+                    placeholder="email" 
+                    value={email}  
+                />
+                <input 
+                    onChange={handleInput} 
+                    type='password' 
+                    name="user_password" 
+                    placeholder="user_password" 
+                    value={user_password}  
+                />
+                <input 
+                    onChange={handleInput} 
+                    type='text' 
+                    name="displayname" 
+                    placeholder="displayname" 
+                    value={displayname}  
+                />
+                <input 
+                    onChange={handleInput} 
+                    type='text' 
+                    name="firstname" 
+                    placeholder="firstname" 
+                    value={firstname}  
+                />
+                <input 
+                    onChange={handleInput} 
+                    type='text' 
+                    name="bio" 
+                    placeholder="bio" 
+                    value={bio}  
+                />
+                <input type='file' name='profiePic' onChange={handleFileInput} />
+                <button type='submit' >Save</button>
+            </form>
         )
     }
+
 }
 
 export default withRouter(EditProfile);
