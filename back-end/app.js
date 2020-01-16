@@ -38,6 +38,8 @@ app.use('/users', usersRouter);
 app.use('/captions', captionsRouter);
 app.use('/likes', likesRouter);
 app.use('/photos', photosRouter);
+
+
 app.post('/photos/upload/:poster_id', upload.single('imgURL'), async (req, res, next) => {
     console.log('req file', req.file)
      

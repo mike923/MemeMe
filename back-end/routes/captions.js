@@ -45,14 +45,22 @@ router.get("/id/:caption_id", async (req, res, next) => {
 });
 
 router.get("/search/:text", async (req, res, next) => {
-  const text = req.params.text;
+  const {text} = req.params;
   try {
     let captions = await db.any(`
-            SELECT * FROM captions
-            WHERE LOWER(body) LIKE '%${text}%'
-        `);
+            SELECT * FROM photos
+            INNER JOIN captions 
+            ON photos.id = captions.photo_id
+            WHERE LOWER(body) LIKE $/search/
+        `, {search: `%${text.toLowerCase()}%`} );
+
+        let photos = {}
+        captions.forEach(p => {
+          if (!photos[p.photo_id]) photos[p.photo_id] = []
+          photos[p.photo_id].push(p)
+        })
     res.json({
-      payload: captions
+      payload: photos
     });
   } catch (err) {
     console.log(err);
