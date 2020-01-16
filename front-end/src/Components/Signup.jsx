@@ -64,55 +64,55 @@ class Signup extends Component {
         
         if (loggedIn) return(<Redirect to='/feed' />)
         return (
-          <form onSubmit={submitForm}>
-            <h2>Sign-Up for Meme Me</h2>
-            {/* <label htmlFor="email">email: </label> */}
-            <input
-              type="email"
-              name="email"
-              placeholder="email@domain.org"
-              value={email}
-              onChange={handleInput}
-            />
-            {/* <label htmlFor="displayname">displayname: </label> */}
-            <input
-              type="text"
-              name="displayname"
-              placeholder="displayname"
-              value={displayname}
-              onChange={handleInput}
-            />
-            {/* <label htmlFor="user_password">password: </label> */}
-            <input
-              type="password"
-              name="user_password"
-              placeholder="password"
-              value={user_password}
-              onChange={handleInput}
-            />
-            {/* <label htmlFor="firstname">full name: </label> */}
-            <input
-              type="text"
-              name="firstname"
-              placeholder="Name"
-              value={firstname}
-              onChange={handleInput}
-            />
-            {/* <label htmlFor="bio">bio: </label> */}
-            <textarea
-              type="text"
-              name="bio"
-              placeholder="Tell us about yourself"
-              value={bio}
-              onChange={handleInput}
-            ></textarea>
-            <button type="submit">Sign Up</button>
-            <Link className="link" to="./login">
-              Already have an account?
-              <br />
-              Log In here.
-            </Link>
-          </form>
+            <form onSubmit={submitForm}>
+                <h2>Sign-Up for Meme Me</h2>
+                {/* <label htmlFor="email">email: </label> */}
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="email@domain.org"
+                    value={email}
+                    onChange={handleInput}
+                />
+                {/* <label htmlFor="displayname">displayname: </label> */}
+                <input
+                    type="text"
+                    name="displayname"
+                    placeholder="displayname"
+                    value={displayname}
+                    onChange={handleInput}
+                />
+                {/* <label htmlFor="user_password">password: </label> */}
+                <input
+                    type="password"
+                    name="user_password"
+                    placeholder="password"
+                    value={user_password}
+                    onChange={handleInput}
+                />
+                {/* <label htmlFor="firstname">full name: </label> */}
+                <input
+                    type="text"
+                    name="firstname"
+                    placeholder="Name"
+                    value={firstname}
+                    onChange={handleInput}
+                />
+                {/* <label htmlFor="bio">bio: </label> */}
+                <textarea
+                    type="text"
+                    name="bio"
+                    placeholder="Tell us about yourself"
+                    value={bio}
+                    onChange={handleInput}
+                ></textarea>
+                <button type="submit">Sign Up</button>
+                <Link className="link" to="./login">
+                    Already have an account?
+                    <br />
+                    Log In here.
+                </Link>
+            </form>
         );
     }
 }

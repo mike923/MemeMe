@@ -64,7 +64,7 @@ class Landing extends Component {
                     placeholder="password"
                 />
                 <button type="submit">Log In</button>
-                <Link className='link' to='./signup'>New to Meme Me?<br />Sign Up here.</Link>
+                <Link className='link' to='/signup'>New to Meme Me?<br />Sign Up here.</Link>
             </form>
         )
     }

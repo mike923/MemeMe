@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('./db')
 
-
 router.post('/signup', async  (req, res) => {
     let insertstuff = `
         INSERT INTO users 
@@ -55,6 +54,7 @@ router.get('/:id', async(req, res, next) => {
 })
 
 router.patch('/:user_id', async (req, res) => {
+
     let setQuery = ''
     for (key in req.body) {
         let set = `${key} = '${req.body[key]}'`
