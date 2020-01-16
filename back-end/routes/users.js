@@ -13,6 +13,7 @@ router.post('/signup', async  (req, res) => {
     let payload = {
         email, user_password, firstname, displayname, bio,
     } = req.body
+    payload.email = email.toLowerCase()
     payload.active = true
     payload.profilePic = 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png'
     console.log(payload, req.body)

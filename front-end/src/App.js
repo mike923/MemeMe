@@ -48,57 +48,48 @@ class App extends Component {
         return (
             <div className="App">
                 <h1>Welcome to Meme Me</h1>
-                <NavBar loggedIn = {userIdLoggedIn }/>
+                {userIdLoggedIn ? <NavBar />: ''}
 
-                {userIdLoggedIn 
-                    ? (
-                        <Switch>
-                            {/* <Route path="/photocomp" 
-                            render={() => <Photo userIdLoggedIn={userIdLoggedIn}/>} 
-                            /> */}
-                            <Route path="/post" 
+                {userIdLoggedIn ? (
+                    <Switch>
+                        <Route path="/post" 
                             render={() => <Post userIdLoggedIn={userIdLoggedIn}/>} 
-                            />
-                            <Route
-                            path="/EditProfile"
+                        />
+                        <Route path="/EditProfile"
                             render={() => <EditProfile userIdLoggedIn={userIdLoggedIn} />}
-                            />
-                            <Route path="/photocomp" 
+                        />
+                        <Route path="/photocomp" 
                             render={() => <Photo userIdLoggedIn={userIdLoggedIn}/>} 
-                            />
-                            <Route path="/user" 
+                        />
+                        <Route path="/user" 
                             render={() => <UserProfile userIdLoggedIn={userIdLoggedIn}/>} 
-                            />
-                            <Route path="/feed" 
+                        />
+                        <Route path="/feed" 
                             render={()=> <Feed userIdLoggedIn={userIdLoggedIn}/>} 
-                            />
-                            <Route path="/photos/upload" 
+                        />
+                        <Route path="/photos/upload" 
                             render={() => <PhotoUpload userIdLoggedIn={userIdLoggedIn} />} 
-                            />
-                            <Route
-                            path="/LogOut"
-                            render={() => <LogOut userIdLoggedIn={userIdLoggedIn}
-                            changeID={changeID} />}
-                            />
-
-                            <Route path="*" 
+                        />
+                        <Route path="/LogOut"
+                            render={() => <LogOut userIdLoggedIn={userIdLoggedIn} changeID={changeID} />}
+                        />
+                        <Route path="*" 
                             render={() => <Error />} 
-                            />
-                        </Switch>
-                    ) : (
-                        <Switch>
-                            <Route path="/signup" 
-                                render={() => <Signup changeID={changeID}/>}
-                            />
-                            <Route path="/login" 
-                                render={() => <Landing changeID={changeID}/>} 
-                            />
-                            <Route path="*" 
-                                render={() => <Landing changeID={changeID}/>} 
-                            />
-                        </Switch>
-                    )
-                }
+                        />
+                    </Switch>
+                ) : (
+                    <Switch>
+                        <Route path="/signup" 
+                            render={() => <Signup changeID={changeID}/>}
+                        />
+                        <Route path="/login" 
+                            render={() => <Landing changeID={changeID}/>} 
+                        />
+                        <Route path="*" 
+                            render={() => <Landing changeID={changeID}/>} 
+                        />
+                    </Switch>
+                )}
             </div>
         );
     }
