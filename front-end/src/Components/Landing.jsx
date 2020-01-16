@@ -4,43 +4,43 @@ import axios from "axios";
 import "../CSS/Landing.css";
 
 class Landing extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      redirect: false,
-      LoggedIn: false
-    };
-  }
-
-  changeID = this.props.changeID;
-
-  submitForm = async event => {
-    event.preventDefault();
-
-    let loginURL = "http://localhost:3001/sessions";
-    try {
-      let response = await axios.post(loginURL, {
-        email: this.state.email,
-        user_password: this.state.password
-      });
-      console.log(response);
-      this.changeID(response.data.user.id);
-      this.setState({ redirect: true });
-    } catch (error) {
-      console.log(error, "axios not working");
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            redirect: false,
+            LoggedIn: false
+        };
     }
-  };
 
-  handleInput = ({ target: { id, value } }) => this.setState({ [id]: value });
+    changeID = this.props.changeID;
 
-  render() {
-    let {
-      state: { email, password, redirect },
-      submitForm,
-      handleInput
-    } = this;
+    submitForm = async event => {
+        event.preventDefault();
+
+        let loginURL = "http://localhost:3001/sessions";
+        try {
+            let response = await axios.post(loginURL, {
+                email: this.state.email,
+                user_password: this.state.password
+            });
+            console.log(response);
+            this.changeID(response.data.user.id);
+            this.setState({ redirect: true });
+        } catch (error) {
+            console.log(error, "axios not working");
+        }
+    };
+
+    handleInput = ({ target: { id, value } }) => this.setState({ [id]: value });
+
+    render() {
+        let {
+            state: { email, password, redirect },
+            submitForm,
+            handleInput
+        } = this;
 
 
         if (redirect) return <Redirect to='/feed' />
