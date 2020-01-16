@@ -5,6 +5,7 @@ import React, {Component} from 'react'
 // import { red, blue, green } from '@material-ui/core/colors'
 // import Button from '@material-ui/core/Button'
 // import React from 'react';
+import Photo from './Photo'
 import { Fade } from 'react-slideshow-image';
 
 const fadeImages = [
@@ -23,9 +24,13 @@ const Slideshow = () => {
     <Fade {...fadeProperties}>
       <div className="each-fade">
         <div className="image-container">
-          <img src='https://www.fosi.org/media/images/22601782810_cbe3ede5f5_o.focus-none.original.jpg' />
+          <Photo 
+              url='https://www.fosi.org/media/images/22601782810_cbe3ede5f5_o.focus-none.original.jpg'
+              photo_id='2'
+          />
+          {/* <img src='https://www.fosi.org/media/images/22601782810_cbe3ede5f5_o.focus-none.original.jpg' /> */}
         </div>
-        <h2>First Slide</h2>
+        {/* <h2>First Slide</h2> */}
       </div>
       <div className="each-fade">
         <div className="image-container">
