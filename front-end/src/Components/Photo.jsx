@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CaptionsSection from '../Components/CaptionsSection'
+import LikeButton from '../Components/LikeButton'
 import axios from 'axios'
 import '../CSS/Photo.css'
 
@@ -39,6 +40,7 @@ class Photo extends Component {
             <div className='meme' style={{backgroundImage: `url('${url}')`}}>
                 <p className='top p' >{caption}</p>
                 {/* <CaptionsSection /> */}
+                < LikeButton />
             </div>
         )
     }
