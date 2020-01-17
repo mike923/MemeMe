@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import CaptionsSection from '../Components/CaptionsSection'
 import LikeButton from '../Components/LikeButton'
 import axios from 'axios'
@@ -36,14 +37,23 @@ class Photo extends Component {
     render() {
         let {caption, url} = this.state
 
-        return (
-            
-            <div className='meme' style={{backgroundImage: `url('${url}')`}}>
-                <p className='top p' >{caption}</p>
-                {/* <CaptionsSection /> */}
-                < LikeButton />
-            </div>
-        )
+        return (<>
+            <Link className='meme'>
+                <img 
+                    src={url}
+                    className="meme" 
+                    alt={caption}
+                    title={caption}
+                    width="305" 
+                    height="229" 
+                />
+                <span className="top p">
+                    {caption}
+                    <div></div>
+                </span>
+            </Link>
+            <LikeButton />
+        </>)
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Photo from '../Components/Photo'
 import SearchBar from '../Components/SearchBar'
+import SubFeed from '../Components/SubFeed'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import '../CSS/Feed.css'
@@ -24,6 +25,7 @@ class Feed extends Component {
         console.log(payload)
         this.setState({ photoFeedArray: payload })
     }
+
     updateSearchArray = (searchFeedArray, searched) => {
         this.setState({searchFeedArray: searchFeedArray, searched: searched})
         console.log()
@@ -61,10 +63,11 @@ class Feed extends Component {
                     <SearchBar updateSearchArray={updateSearchArray}/>
                 </div>
                 <br></br>
-                <h3>Feed</h3>   
-                <div className='photoFeed'>
+                <h3>Feed</h3> 
+                <SubFeed photos={searched ? searchFeedArray : photoFeedArray}/>  
+                {/* <div className='photoFeed'>
                     <ul className='photos'>{searched ? searchFeedArray.map(turnPhoto) : photoFeedArray.map(turnPhoto)}</ul>
-                </div>
+                </div> */}
             </div>
         )
     }
