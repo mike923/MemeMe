@@ -7,10 +7,15 @@ class CaptionsSection extends Component {
         super(props) 
         this.state = {
             // loggedIn: this.props.userIdLoggedIn,
-            
+            photoId: '',
+            commentSection: []
         }
     }
 
+    componentDidMount = async () => {
+        const {commentsSection} = this.state
+        
+    }
     render() {
         let {
             // state: {loggedIn}
@@ -19,7 +24,7 @@ class CaptionsSection extends Component {
         // if (!loggedIn) return(<Redirect to='/login' />)
         return(
             <div>
-                Captions section
+                {/* <ul>{this.commentSection}</ul> */}
             </div>
         )
     }
