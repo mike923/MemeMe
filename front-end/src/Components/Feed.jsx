@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import '../CSS/Feed.css'
 
+
 class Feed extends Component {
     constructor(props) {
         super(props)
@@ -56,7 +57,7 @@ class Feed extends Component {
         return(
             <div>
                 <br></br>
-                <div>
+                <div className= "searchBar">
                     <SearchBar updateSearchArray={updateSearchArray}/>
                 </div>
                 <br></br>

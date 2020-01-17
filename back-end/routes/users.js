@@ -126,12 +126,12 @@ router.patch('/deactivate/:user_id', async (req, res)=>{
     }
     })
 
-router.get("/specific/active", async (req, res) => {
+router.post("/specific/active", async (req, res) => {
     let {email, user_password} = req.body
     console.log('body', req.body)
     
     try {
-        let user = await db.any(`
+        let user = await db.one(`
             SELECT * FROM users 
             WHERE email = $1
             AND user_password = $2
@@ -140,7 +140,7 @@ router.get("/specific/active", async (req, res) => {
         res.json({
             email, user_password,
             message: "Succcess, Retrieved all the users",
-            payload: user,
+            user
         });
     } catch (error) {
         console.log(error);

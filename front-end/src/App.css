@@ -38,6 +38,9 @@
 }
 
 .NavBar{
-  display: flex;
-  justify-content: space-evenly;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: .25em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }

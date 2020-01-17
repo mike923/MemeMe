@@ -21,15 +21,17 @@ class Landing extends Component {
         event.preventDefault();
 
         let {email, user_password} = this.state
-        try {
-            let {data: {user}} = await axios.post("http://localhost:3001/sessions", {email, user_password});
-            this.setState({ redirect: true });
-            this.changeID(user.id);
-        } catch (error) {
-            console.log(error, "axios not working");
-            this.setState({ error: true });
-        }
-    };
+
+    try{
+        let {data: {user}} = await axios.post("http://localhost:3001/users/specific/active", {email, user_password});
+        console.log(user)
+        this.setState({redirect: true});
+        this.changeID(user.id);
+    }catch(error){
+        console.log(error, 'axios not working')
+        this.setState({error:true})
+    }
+};
 
     handleInput = ({ target: { name, value } }) => this.setState({ [name]: value });
 
@@ -44,7 +46,7 @@ class Landing extends Component {
         if (redirect) return <Redirect to='/feed' />
         return (
             <form onSubmit={submitForm} className = 'box'>
-                <h2>Landing page</h2>
+                <h2>Welcome to Meme Me</h2>
                 <h3 hidden={!error}>Username and password combination did not match anything in our system. <br/>Please try again.</h3>
                 <input
                     type="email"
