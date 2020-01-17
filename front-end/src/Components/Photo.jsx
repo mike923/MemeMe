@@ -36,6 +36,7 @@ class Photo extends Component {
         let {caption, url} = this.state
 
         return (
+            
             <div className='meme' style={{backgroundImage: `url('${url}')`}}>
                 <p className='top p' >{caption}</p>
                 {/* <CaptionsSection /> */}

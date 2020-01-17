@@ -120,8 +120,8 @@ class Signup extends Component {
                                 <label htmlFor="user_password">Password </label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12">
+                        <div className="row">
+                            <div className="input-field col s12">
                                 <textarea
                                     type="text"
                                     id="bio"
@@ -136,13 +136,13 @@ class Signup extends Component {
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <button className="btn btn-large btn-register waves-effect waves-light" type="button" name="action">
-                                    <Link className='buttonlink' to="./login" style={{color:'white'}}>
+                                <Link className='buttonlink' to="/login" style={{color:'white'}}>
+                                    <button className="btn btn-large btn-register waves-effect waves-light" type="button" name="action">
                                         Already have an account?
                                         <br />
                                         Log In here.
-                                    </Link>
-                                </button>
+                                    </button>
+                                </Link>
                             </div>
                             <div className="input-field col s6">
                                 <button className="btn btn-large btn-register waves-effect waves-light" type="submit" name="action">Register
