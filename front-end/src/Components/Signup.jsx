@@ -63,57 +63,97 @@ class Signup extends Component {
         } = this
         
         if (loggedIn) return(<Redirect to='/feed' />)
-        return (
-            <form className='box' onSubmit={submitForm}>
-                <h2>Sign-Up for Meme Me</h2>
-                {/* <label htmlFor="email">email: </label> */}
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="email@domain.org"
-                    value={email}
-                    onChange={handleInput}
-                />
-                {/* <label htmlFor="displayname">displayname: </label> */}
-                <input
-                    type="text"
-                    name="displayname"
-                    placeholder="displayname"
-                    value={displayname}
-                    onChange={handleInput}
-                />
-                {/* <label htmlFor="user_password">password: </label> */}
-                <input
-                    type="password"
-                    name="user_password"
-                    placeholder="password"
-                    value={user_password}
-                    onChange={handleInput}
-                />
-                {/* <label htmlFor="firstname">full name: </label> */}
-                <input
-                    type="text"
-                    name="firstname"
-                    placeholder="Name"
-                    value={firstname}
-                    onChange={handleInput}
-                />
-                {/* <label htmlFor="bio">bio: </label> */}
-                <textarea
-                    type="text"
-                    name="bio"
-                    placeholder="Tell us about yourself"
-                    value={bio}
-                    onChange={handleInput}
-                ></textarea>
-                <button type="submit">Sign Up</button>
-                <Link className="link" to="./login">
-                    Already have an account?
-                    <br />
-                    Log In here.
-                </Link>
-            </form>
-        );
+        return (<>
+            <div className="container">
+                <div className="row">
+                    <form className="col s12" id="reg-form" onSubmit={submitForm}>
+                        <h2>Sign-Up for Meme Me</h2>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                <input
+                                    type="text"
+                                    id="displayname"
+                                    name="displayname"
+                                    value={displayname}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                />
+                                <label htmlFor="displayname">Username </label>
+                            </div>
+                            <div className="input-field col s6">
+                                <input
+                                    type="text"
+                                    id="firstname"
+                                    name="firstname"
+                                    value={firstname}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                />
+                                <label htmlFor="firstname">Full Name </label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                    />
+                                <label htmlFor="email">Email </label>
+                            </div>
+                            <div className="input-field col s6">
+                                <input
+                                    type="password"
+                                    id="user_password"
+                                    name="user_password"
+                                    value={user_password}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                />
+                                <label htmlFor="user_password">Password </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea
+                                    type="text"
+                                    id="bio"
+                                    name="bio"
+                                    value={bio}
+                                    onChange={handleInput}
+                                    className="materialize-textarea"
+                                    required
+                                ></textarea>
+                                <label htmlFor="bio">Tell Us About Yourself </label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s6">
+                                <button className="btn btn-large btn-register waves-effect waves-light" type="button" name="action">
+                                    <Link className='buttonlink' to="./login" style={{color:'white'}}>
+                                        Already have an account?
+                                        <br />
+                                        Log In here.
+                                    </Link>
+                                </button>
+                            </div>
+                            <div className="input-field col s6">
+                                <button className="btn btn-large btn-register waves-effect waves-light" type="submit" name="action">Register
+                                    <i className="material-icons right">done</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </>);
     }
 }
 
