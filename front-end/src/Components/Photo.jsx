@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import {Link} from 'react-router-dom'
 import CaptionsSection from '../Components/CaptionsSection'
+=======
+import InputCaption from '../Components/InputCaption'
+>>>>>>> d4477a4443ae6c4ef40abb27f016e0d3e13d1d2d
 import LikeButton from '../Components/LikeButton'
 import axios from 'axios'
 import '../CSS/Photo.css'
@@ -37,6 +41,7 @@ class Photo extends Component {
     render() {
         let {caption, url} = this.state
 
+<<<<<<< HEAD
         return (<>
             <Link className='meme'>
                 <img 
@@ -54,6 +59,16 @@ class Photo extends Component {
             </Link>
             <LikeButton />
         </>)
+=======
+        return (
+            
+            <div className='meme' style={{backgroundImage: `url('${url}')`}}>
+                <p className='top p' >{caption}</p>
+                < InputCaption />
+                < LikeButton />
+            </div>
+        )
+>>>>>>> d4477a4443ae6c4ef40abb27f016e0d3e13d1d2d
     }
 }
 
