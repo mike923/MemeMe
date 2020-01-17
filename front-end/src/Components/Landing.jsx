@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Route, Redirect } from "react-router-dom";
 import axios from "axios";
-import "../CSS/Landing.css";
+// import "../CSS/Landing.css";
 
 class Landing extends Component {
     constructor(props) {

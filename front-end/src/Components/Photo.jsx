@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CaptionsSection from '../Components/CaptionsSection'
 import axios from 'axios'
 import '../CSS/Photo.css'
 
@@ -18,7 +19,7 @@ class Photo extends Component {
 
     componentDidMount = async () => {
         let {id} = this.state
-        console.log(id)
+        // console.log(id)
         try {
             let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
             console.log(captions)
@@ -37,8 +38,7 @@ class Photo extends Component {
         return (
             <div className='meme' style={{backgroundImage: `url('${url}')`}}>
                 <p className='top p' >{caption}</p>
-                {/* <img src= {picture_url}></img> */}
-                {/* <p className='bottom p'>meme meme meme</p> */}
+                <CaptionsSection />
             </div>
         )
     }
