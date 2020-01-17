@@ -65,7 +65,7 @@ class EditProfile extends Component {
 
         if (redirect) return (<Redirect to='/user' />)
         return (
-            <form onSubmit={handleSubmit}>
+            <form className='box' onSubmit={handleSubmit}>
                 <img src={profilepic} alt="profile picture" height="150px" />
                 <input 
                     onChange={handleInput} 

@@ -3,7 +3,8 @@ import axios from 'axios'
 import SlideShow from './SlideShow'
 import CaptionsSection from './CaptionsSection'
 import InputCaption from './InputCaption'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import '../CSS/Post.css'
 
 class Post extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Post extends Component {
 
         if (!loggedIn) return(<Redirect to='/login' />)
         return(
-            <div>
+            <div className='postcss'>
                 <SlideShow />
                 <InputCaption />
                 <CaptionsSection />

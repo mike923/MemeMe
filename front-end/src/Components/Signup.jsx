@@ -64,7 +64,7 @@ class Signup extends Component {
         
         if (loggedIn) return(<Redirect to='/feed' />)
         return (
-            <form onSubmit={submitForm}>
+            <form className='box' onSubmit={submitForm}>
                 <h2>Sign-Up for Meme Me</h2>
                 {/* <label htmlFor="email">email: </label> */}
                 <input
