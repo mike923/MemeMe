@@ -72,6 +72,7 @@ router.get('/caption/:caption_id', async (req, res, next) => {
       message: 'Success getting photo',
       success: true
     })
+    console.log(photos)
   } catch(error){
     res.json({
       message: 'Error something went wrong',

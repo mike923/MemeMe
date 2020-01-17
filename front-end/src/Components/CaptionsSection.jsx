@@ -12,10 +12,7 @@ class CaptionsSection extends Component {
         }
     }
 
-    componentDidMount = async () => {
-        const {commentsSection} = this.state
-        
-    }
+    
     render() {
         let {
             // state: {loggedIn}
