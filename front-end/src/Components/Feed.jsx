@@ -4,6 +4,7 @@ import SearchBar from '../Components/SearchBar'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
+
 class Feed extends Component {
     constructor(props) {
         super(props)
@@ -46,11 +47,11 @@ class Feed extends Component {
         return(
             <div>
                 <br></br>
-                <div>
+                <div className= "searchBar">
                     <SearchBar />
                 </div>
                 <h3>Feed</h3>   
-                <div>
+                <div className = "feed">
                     <ul>{photoFeed}</ul>
                 </div>
             </div>
