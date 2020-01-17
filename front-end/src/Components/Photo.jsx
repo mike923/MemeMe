@@ -38,7 +38,7 @@ class Photo extends Component {
         return (
             <div className='meme' style={{backgroundImage: `url('${url}')`}}>
                 <p className='top p' >{caption}</p>
-                <CaptionsSection />
+                {/* <CaptionsSection /> */}
             </div>
         )
     }
