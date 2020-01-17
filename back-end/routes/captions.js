@@ -81,7 +81,7 @@ router.post("/photos", async (req, res) => {
         message: "information Missing"
       });
     } else {
-      await db.none(insertQuery, [
+      await db.one(insertQuery, [
         photo_id,
         commenter_id,
         body,
