@@ -12,7 +12,7 @@ import Landing from "./Components/Landing";
 import UserProfile from "./Components/UserProfile";
 import PhotoUpload from "./Components/PhotoUpload";
 import EditProfile from "./Components/EditProfile";
-import './App.css';
+// import './App.css';
 
 
 class App extends Component {
