@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from "react-router-dom";
-import axios from 'axios'
+import { Route, Switch } from "react-router-dom";
+// import axios from 'axios'
 import Post from './Components/Post'
 import Feed from "./Components/Feed";
 import Error from './Components/Error'
@@ -49,7 +49,7 @@ class App extends Component {
         return (
             <div className="App">
                 {/* <h1>Welcome to Meme Me</h1> */}
-                {userIdLoggedIn ? <NavBar />: ''}
+                {userIdLoggedIn ? <NavBar userIdLoggedIn={userIdLoggedIn} />: ''}
 
                 {userIdLoggedIn ? (
                     <Switch>
