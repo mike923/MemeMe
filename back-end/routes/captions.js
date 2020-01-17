@@ -60,7 +60,7 @@ router.get("/search/:text", async (req, res, next) => {
           photos[p.photo_id].push(p)
         })
     res.json({
-      payload: photos
+      payload: captions
     });
   } catch (err) {
     console.log(err);
