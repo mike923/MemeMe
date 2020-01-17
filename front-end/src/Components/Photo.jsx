@@ -22,7 +22,7 @@ class Photo extends Component {
         // console.log(id)
         try {
             let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
-            console.log(captions)
+            console.log('getting', captions)
             this.setState({caption: captions[0].body})
         } catch(error) {
             this.setState({
