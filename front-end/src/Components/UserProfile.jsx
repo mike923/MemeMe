@@ -48,7 +48,6 @@ class UserProfile extends Component {
     }
   };
 
-
   render() {
     let {
       state: {
@@ -65,7 +64,10 @@ class UserProfile extends Component {
     if (!loggedIn) return <Redirect to="/login" />;
     return (
       <div className="container">
-        
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
         {/* <div>
           <h2>{displayname}</h2>
           <img src={profilepic} alt={profilePicAlt} height="150px" />
@@ -94,13 +96,13 @@ class UserProfile extends Component {
               </div>
               <div class="card-action">
                 <Link to="/EditProfile"> Edit Profile </Link>
-                <Link to="/PhotoUplaod"> Upload Photo </Link>
+                <Link to="/photos/upload"> Upload Photo </Link>
               </div>
             </div>
           </div>
         </div>
-          <h3>My photos go here</h3>
-          <SubFeed photos={photos}/>
+        <h3>My photos go here</h3>
+        <SubFeed photos={photos} />
       </div>
     );
   }
