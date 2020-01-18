@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import LikeButton from '../Components/LikeButton'
 import axios from 'axios'
 import '../CSS/Photo.css'
+import CaptionsSection from './CaptionsSection'
 
 class Photo extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Photo extends Component {
         let {id} = this.state
         try {
             let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
-            console.log('getting', captions)
+            // console.log('getting', captions)
             this.setState({caption: captions[0].body})
         } catch(error) {
             this.setState({
@@ -47,6 +48,7 @@ class Photo extends Component {
                 </span>
             </Link>
             <LikeButton />
+            <CaptionsSection />
         </>)
     }
 }

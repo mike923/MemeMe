@@ -47,7 +47,7 @@ class SearchBar extends Component {
             try{
                 const {data:{payload}} = await axios.get(`http://localhost:3001/captions/search/${searchValue}`)
                 console.log('payload',payload)
-                this.updateSearchArray(payload, !!searchValue.length)
+                await this.updateSearchArray(payload, !!searchValue.length)
             } catch(error){ 
                 console.log('err', error)
             }
