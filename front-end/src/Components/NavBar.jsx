@@ -12,8 +12,6 @@ const NavBar = () => {
             <Link to="/feed"> <i class="large material-icons"
             >explore</i> </Link>
             <br />
-            <Link to="/photocomp">photo</Link>
-            <br />
             <Link to="/photos/upload"><i class="large material-icons"
             >add_a_photo</i></Link>
             <br />
