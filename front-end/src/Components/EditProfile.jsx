@@ -69,7 +69,7 @@ class EditProfile extends Component {
         return (<>
             <div className="container">
                 <div className="row">
-                        <img src={profilepic} className='responsive-image' alt="profile picture" height="150px" />
+                    <img src={profilepic} className='responsive-image' alt="profile picture" height="150px" />
                     <form className="col s12 offset-s2" id="reg-form" onSubmit={handleSubmit}>
                         <div className="row">
                             <div className="input-field col s8">
@@ -79,6 +79,7 @@ class EditProfile extends Component {
                                     name="displayname"
                                     value={displayname}
                                     onChange={handleInput}
+                                    autoFocus='true'
                                     className="validate"
                                     required
                                 />
@@ -93,6 +94,7 @@ class EditProfile extends Component {
                                     name="firstname"
                                     value={firstname}
                                     onChange={handleInput}
+                                    autoFocus='true'
                                     className="validate"
                                     required
                                 />
@@ -107,6 +109,7 @@ class EditProfile extends Component {
                                     name="email"
                                     value={email}
                                     onChange={handleInput}
+                                    autoFocus='true'
                                     className="validate"
                                     required
                                 />
@@ -121,6 +124,7 @@ class EditProfile extends Component {
                                     name="user_password"
                                     value={user_password}
                                     onChange={handleInput}
+                                    autoFocus='true'
                                     className="validate"
                                     required
                                 />
@@ -135,6 +139,7 @@ class EditProfile extends Component {
                                     name="bio"
                                     value={bio}
                                     onChange={handleInput}
+                                    autoFocus='true'
                                     className="materialize-textarea"
                                 ></textarea>
                                 <label htmlFor="bio">Tell Us About Yourself </label>
@@ -147,7 +152,7 @@ class EditProfile extends Component {
                                     <input type ='file' onChange={this.handleFileInput} />
                                 </div>
                                 <div className = 'file-path-wrapper'>
-                                    <input className = 'validate' onChange={this.handleFileInput} type = 'text' />
+                                    <input className = 'file-path validate' placeholder='profile_picture.jpeg' type = 'text' />
                                 </div>
                             </div>
                         </div>
