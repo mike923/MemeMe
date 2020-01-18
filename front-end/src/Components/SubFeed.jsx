@@ -10,9 +10,7 @@ class SubFeed extends Component{
     }
 
     // componentDidMount = async () => {
-    //     let {data: {payload}} = await axios.get('http://localhost:3001/photos/all')
-    //     console.log(payload)
-    //     this.setState({ photoFeedArray: payload })
+    //     this.setState({ photos: this.props.photos})
     // }
 
     turnPhoto = (img) => {

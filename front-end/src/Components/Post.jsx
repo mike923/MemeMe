@@ -11,6 +11,7 @@ class Post extends Component {
         super(props) 
         this.state = {
             loggedIn: this.props.userIdLoggedIn,
+            postId: ''
         }
     }
     
