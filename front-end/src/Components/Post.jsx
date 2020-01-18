@@ -25,7 +25,7 @@ class Post extends Component {
             <div className='postcss'>
                 <SlideShow />
                 <InputCaption />
-                <CaptionsSection />
+                <CaptionsSection caption_id='1'/>
             </div>
         )
     }
