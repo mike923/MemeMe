@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Photo from "../Components/Photo.jsx";
 import axios from "axios";
-import {Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PhotoUpload from "./PhotoUpload.jsx";
+import SubFeed from "./SubFeed.jsx";
 
 class UserProfile extends Component {
   constructor(props) {
@@ -100,18 +101,8 @@ class UserProfile extends Component {
             </div>
           </div>
         </div>
-        <div className= "PhotoUpload">
-          
-        </div>
-        <div>
           <h3>My photos go here</h3>
-          <div>
-            {photos.map(photo => (
-              <Photo photo_id={photo.id} url={photo.picture_url} />
-            ))}
-            <PhotoUpload/>
-          </div>
-        </div>
+          <SubFeed photos={photos}/>
       </div>
     );
   }

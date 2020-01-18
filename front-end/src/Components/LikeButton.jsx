@@ -17,9 +17,7 @@ class LikeButton extends Component {
         console.log('like button is clicked',liked)
         this.setState({
             liked: !liked
-        })
-
-        
+        })   
     }
 
     render() {
@@ -34,7 +32,6 @@ class LikeButton extends Component {
             return (
                 <div>
                     <button onClick={this.handleClick}>Unlike</button>
-                    <p>Click to unlike</p>
                 </div>
                 ) 
          }

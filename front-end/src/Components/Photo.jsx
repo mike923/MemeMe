@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CaptionsSection from '../Components/CaptionsSection'
+import {Link} from 'react-router-dom'
 import LikeButton from '../Components/LikeButton'
 import axios from 'axios'
 import '../CSS/Photo.css'
@@ -14,13 +14,8 @@ class Photo extends Component {
         }
     }
 
-
-    // let {url, caption, picture_url} = props
-    // console.log(url, caption)
-
     componentDidMount = async () => {
         let {id} = this.state
-        // console.log(id)
         try {
             let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
             console.log('getting', captions)
@@ -36,14 +31,23 @@ class Photo extends Component {
     render() {
         let {caption, url} = this.state
 
-        return (
-            
-            <div className='meme' style={{backgroundImage: `url('${url}')`}}>
-                <p className='top p' >{caption}</p>
-                {/* <CaptionsSection /> */}
-                < LikeButton />
-            </div>
-        )
+        return (<>
+            <Link className='meme'>
+                <img 
+                    src={url}
+                    className="meme" 
+                    alt={caption}
+                    title={caption}
+                    width="305" 
+                    height="229" 
+                />
+                <span className="top p">
+                    {caption}
+                    <div></div>
+                </span>
+            </Link>
+            <LikeButton />
+        </>)
     }
 }
 

@@ -17,6 +17,10 @@ class InputCaption extends Component {
         console.log(this.state.caption)
     }
 
+    inputCaption = () => {
+        const {caption} = this.state
+    }
+
     render() {
         let {
             state: {
