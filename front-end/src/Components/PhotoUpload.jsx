@@ -48,11 +48,35 @@ class PhotoUpload extends React.Component {
 
     render() {
         return (
-            <div className ='uploader'>
-                <form className='box' onSubmit={this.handleSubmit} >
-                    <input type='file' onChange={this.handleFileInput} />
-                    <input type='submit' value='Upload' />
-                </form>
+            <div className ='uploader container'>
+                <form onSubmit= {this.handleSubmit} className='col s12'>
+                    <div className='row'>
+                        <div className='file-field input-field inline s6'>
+                            <div className = 'file-path-wrapper'>
+                                <input className = 'file-path validate' onChange={this.handleFileInput} type = 'text' />
+                            </div>
+                            <div className='btn'>
+                                <span> File </span> 
+                                <input type ='file' onChange={this.handleFileInput} />
+                            </div>
+                            <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <i className="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+
+    </form>
+
+
+
+
+
+
+                
+                {/* // <form className='box' onSubmit={this.handleSubmit} >
+                //     <input type='file' onChange={this.handleFileInput} />
+                //     <input type='submit' value='Upload' />
+                // </form>  */}
             </div>
         )
     }  
