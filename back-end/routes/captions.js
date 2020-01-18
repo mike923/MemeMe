@@ -12,6 +12,8 @@ router.get("/photos/:photo_id", async (req, res, next) => {
             FROM captions
             INNER JOIN users
             ON captions.commenter_id = users.id
+            INNER JOIN photos
+            ON captions.photo_id = photos.id
             WHERE photo_id = ${req.params.photo_id}
         `);
 
@@ -62,7 +64,7 @@ router.get("/search/:text", async (req, res, next) => {
             if (!photos[p.photo_id]) photos[p.photo_id] = []
             photos[p.photo_id].push(p)
         })
-        
+
         res.json({
             payload: captions
         });
