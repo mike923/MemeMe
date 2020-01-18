@@ -5,7 +5,8 @@ class SubFeed extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            photos: this.props.photos
+            photos: this.props.photos,
+            delPost: this.props.delPost
         }
     }
 
@@ -14,6 +15,7 @@ class SubFeed extends Component{
     // }
 
     turnPhoto = (img) => {
+        const {delPost} = this.props
         return (
             <div className='col s12 m6 l4'>
                 <div className='card'>
@@ -23,6 +25,7 @@ class SubFeed extends Component{
                             photo_id={img.id}
                             poster_id= {img.poster_id}
                             date_posted= {img.date_posted}
+                            delPost = {delPost}
                         />
                     </div>
                 </div>
