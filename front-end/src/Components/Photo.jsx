@@ -57,7 +57,7 @@ class Photo extends Component {
                 </span>
             </Link>
             <LikeButton 
-            id ={id}/>
+            id ={photo_id}/>
             
             {delPost? <DeleteButton/> : ''}
             <CaptionsSection />
