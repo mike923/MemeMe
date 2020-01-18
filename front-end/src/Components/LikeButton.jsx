@@ -14,8 +14,18 @@ class LikeButton extends Component {
     }
 
     componentDidMount = async() => {
-        let {data} = await axios.get(`http://localhost:3001/likes/captions/${this.props.id}/liker/${sessionStorage.getItem('id')}`)
-        console.log(data)
+        await this.reloadLikes()
+    }
+    
+    reloadLikes = async () => {
+        try {
+            let {data} = await axios.get(`http://localhost:3001/likes/captions/${this.props.id}/liker/${sessionStorage.getItem('id')}`)
+            console.log(data)
+            this.setState({liked: data.data.like_value})
+        } catch(error) {
+            this.setState({liked: false})
+    
+        }
     }
 
     handleClick = async (event) => {
@@ -39,7 +49,7 @@ class LikeButton extends Component {
     render() {
         const {liked} = this.state
         return (
-            <a onClick={this.handleClick}className="secondary-content" style={liked?{color:'#26a69a'}:{color:'red'}}>
+            <a onClick={this.handleClick}className="secondary-content" style={!liked?{color:'#26a69a'}:{color:'red'}}>
                 <i className="material-icons" >grade</i>
             </a>
         ) 

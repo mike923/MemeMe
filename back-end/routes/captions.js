@@ -53,8 +53,8 @@ router.get("/search/:text", async (req, res, next) => {
     const {text} = req.params;
     try {
         let captions = await db.any(`
-        SELECT picture_url ,ARRAY_AGG(captions.body) FROM captions
-        LEFT JOIN photos
+        SELECT photos.picture_url, captions.photo_id ,ARRAY_AGG(captions.body) FROM photos
+        INNER JOIN captions
         ON photos.id = captions.photo_id
         WHERE LOWER(body) LIKE $/search/
          GROUP BY photo_id, picture_url

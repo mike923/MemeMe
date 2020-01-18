@@ -26,9 +26,9 @@ class Feed extends Component {
         this.setState({ photoFeedArray: payload })
     }
 
-    updateSearchArray = (searchFeedArray, searched) => {
+    updateSearchArray = async (searchFeedArray, searched) => {
         console.log('searchFeedArr',searchFeedArray)
-        this.setState({searchFeedArray: searchFeedArray, searched: searched})
+        await this.setState({searchFeedArray: searchFeedArray, searched: searched})
        
     }
 
@@ -36,7 +36,7 @@ class Feed extends Component {
         return (
             <Photo
                 url={img.picture_url}
-                photo_id={img.id}
+                photo_id={img.photo_id}
                 poster_id= {img.poster_id}
                 date_posted= {img.date_posted}
             />

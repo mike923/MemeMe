@@ -18,7 +18,7 @@ class SubFeed extends Component{
                     <div className='card-image waves-effect waves-block waves-light'>
                         <Photo 
                             url={img.picture_url}
-                            photo_id={img.id}
+                            photo_id={img.photo_id}
                             poster_id= {img.poster_id}
                             date_posted= {img.date_posted}
                             delPost = {delPost}

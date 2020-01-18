@@ -22,7 +22,7 @@ router.get("/active", async (req, res) => {
 router.get("/captions/:caption_id/liker/:liker_id", async (req, res) => {
   let {caption_id, liker_id} = req.params;
   try {
-    let likes = await db.any(
+    let likes = await db.one(
       `SELECT * FROM likes WHERE caption_id = ${caption_id} AND liker_id = ${liker_id}`
     );
     
@@ -41,13 +41,18 @@ router.post("/captions/:caption_id", async (req, res) => {
   let {caption_id} = req.params;
   let {like_value, liker_id} = req.body
   try {
-    // let likes = await db.any(
-    //   `SELECT * FROM likes WHERE caption_id = ${caption_id} AND liker_id = ${liker_id}`
-    // );
-    let insertQuery = `
-    IF NOT EXIST (SELECT * FROM likes WHERE liker_id=$2 AND caption_id=$3)
+    let likes = await db.any(
+      `SELECT * FROM likes WHERE caption_id = ${caption_id} AND liker_id = ${liker_id}`
+    );
+    let insertQuery
+    if (likes.length){
+    insertQuery = `
     INSERT into likes(like_value, liker_id, caption_id )
                 VALUES($1, $2, $3)`;
+    } else {
+       insertQuery = `
+      UPDATE likes SET like_value = $1 WHERE liker_id=$2 AND caption_id = $3`
+    }
     if (!insertQuery) {
       res.json({
         message: "information Missing"
