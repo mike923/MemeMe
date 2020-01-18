@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 class PhotoUpload extends React.Component {
     constructor(props){
@@ -41,8 +42,10 @@ class PhotoUpload extends React.Component {
             this.setState ({
                 imgURL: response.data,
             })
+            toast.success('Photo Uploaded', {autoClose:2000})
         } catch(error) {
             console.log('err', error)
+            toast.error('Error uploading Photo')
         }
     }
 

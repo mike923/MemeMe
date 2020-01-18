@@ -3,27 +3,34 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
+        <>
         <nav className="NavBar">
-              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-             
-            <Link to="/post"
-            > post  </Link>
+            
+            {/* <img src = 'https://toppng.com/uploads/preview/trollface-transparent-troll-face-11563021387zkvgkht8a9.png' width= '50px' /> 
+          */}
+            {/* <Link to="/post"
+            > post  </Link> */}
             <br />
             <Link to="/feed"> <i class="large material-icons"
             >explore</i> </Link>
             <br />
-            <Link to="/photos/upload"><i class="large material-icons"
-            >add_a_photo</i></Link>
+            {/* <Link to="/photos/upload"><i class="large material-icons"
+            >add_a_photo</i></Link> */}
             <br />
             <Link to="/user"><i class="large material-icons"
             > face </i></Link>
             <br />
-            <Link to="/EditProfile"> <i class="large material-icons"
-            >edit</i></Link>
+            {/* <Link to="/EditProfile"> <i class="large material-icons"
+            >edit</i></Link> */}
             <br/>
             <Link to="/LogOut"> <i class="large material-icons"
             >exit_to_app</i></Link>
+            
         </nav>
+        <br/>
+        <br/>
+        
+        </>
     );
 };
 
