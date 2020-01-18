@@ -28,7 +28,7 @@ class Feed extends Component {
 
     updateSearchArray = (searchFeedArray, searched) => {
         this.setState({searchFeedArray: searchFeedArray, searched: searched})
-        console.log()
+       
     }
 
     turnPhoto = img => {

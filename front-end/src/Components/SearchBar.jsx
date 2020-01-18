@@ -8,8 +8,8 @@ class SearchBar extends Component {
         this.state = {
             user_id : this.props.userIdLoggedIn,
             searchValue: '',
-            photoFeed: this.props.photoFeed
-
+            photoFeed: this.props.photoFeed,
+            searchBarArray: this.props.searchFeedArray
         }
     }
 
@@ -50,7 +50,7 @@ class SearchBar extends Component {
                 console.log('payload',payload)
                 await this.updateSearchArray(payload, !!searchValue.length)
                 this.setState({
-                    
+                    searchFeedArray: payload
                 })
             } catch(error){ 
                 console.log('err', error)
