@@ -32,10 +32,9 @@ class Photo extends Component {
     }
 
     render() {
-
         let {caption} = this.state
         let { url, delPost, photo_id} = this.props
-
+        console.log('these are supposed to be our props', this.props)
 
 //         let {caption, url, delPost, id, } = this.state
 
