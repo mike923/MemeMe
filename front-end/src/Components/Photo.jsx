@@ -32,9 +32,15 @@ class Photo extends Component {
     }
 
     render() {
-        let {caption, url, delPost, id, } = this.state
+
+        let {caption} = this.state
+        let { url, delPost, photo_id} = this.props
+
+
+//         let {caption, url, delPost, id, } = this.state
+
         return (<>
-            <Link className='meme' to={'/post/'+id}>
+            <Link className='meme' to={'/post/'+photo_id}>
                 <img 
                     
                     src={url}
@@ -43,7 +49,7 @@ class Photo extends Component {
                     title={caption}
                     width="305" 
                     height="229" 
-                    value={id}
+                    // value={photo_id}
                 />
                 <span className="top p">
                     {caption}
