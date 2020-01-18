@@ -32,7 +32,6 @@ class LikeButton extends Component {
             return (
                 <div>
                     <button onClick={this.handleClick}>Unlike</button>
-                    <p>Click to unlike</p>
                 </div>
                 ) 
          }

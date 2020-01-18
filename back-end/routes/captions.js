@@ -48,12 +48,11 @@ router.get("/search/:text", async (req, res, next) => {
   const {text} = req.params;
   try {
     let captions = await db.any(`
-            SELECT DISTINCT picture_url FROM photos
-            INNER JOIN captions
+            SELECT picture_url FROM captions
+            INNER JOIN photos
             ON photos.id = captions.photo_id
             WHERE LOWER(body) LIKE $/search/
         `, {search: `%${text.toLowerCase()}%`} );
-
         let photos = {}
         captions.forEach(p => {
           if (!photos[p.photo_id]) photos[p.photo_id] = []
@@ -105,3 +104,8 @@ router.post("/photos", async (req, res) => {
 
 module.exports = router;
 
+//old sql query for search by caption text
+// SELECT DISTINCT picture_url FROM photos
+//             INNER JOIN captions
+//             ON photos.id = captions.photo_id
+//             WHERE LOWER(body) LIKE $/search/
