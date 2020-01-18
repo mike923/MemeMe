@@ -43,7 +43,7 @@ class Slideshow extends Component {
                     <div className="image-container">
                         <Photo 
                             url='https://www.fosi.org/media/images/22601782810_cbe3ede5f5_o.focus-none.original.jpg'
-                            photo_id='2'
+                            photo_id='1'
                         />
                     </div>
                     {/* <h2>First Slide</h2> */}
