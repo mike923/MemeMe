@@ -68,33 +68,25 @@ class UserProfile extends Component {
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
-        {/* <div>
-          <h2>{displayname}</h2>
-          <img src={profilepic} alt={profilePicAlt} height="150px" />
-          <h3>{firstname}</h3>
-          <p>{bio}</p>
-          <button onClick={this.handleEdit}> Edit Profile</button>
-        </div> */}
-        {/* <div>
-          <h3>My photos go here</h3>
-          <div>
-            {photos.map(photo => (
-              <Photo photo_id={photo.id} url={photo.picture_url} />
-            ))}
-          </div>
-        </div> */}
-        <div class="col s12 m7">
-          <h2 class="header"> {displayname}</h2>
-          <div class="card horizontal">
-            <div class="card-image">
+       
+       <br/>
+
+
+
+
+
+        <div className="col s12 m7">
+          <h2 className="header"> {displayname}</h2>
+          <div className="card horizontal">
+            <div className="card-image">
               <img src={profilepic} alt={profilePicAlt} height="200px" />
             </div>
-            <div class="card-stacked">
-              <div class="card-content">
+            <div className="card-stacked">
+              <div className="card-content">
                 <h5>{firstname}</h5>
                 <p> {bio}</p>
               </div>
-              <div class="card-action">
+              <div className="card-action">
                 <Link to="/EditProfile"> Edit Profile </Link>
                 <Link to="/photos/upload"> Upload Photo </Link>
               </div>

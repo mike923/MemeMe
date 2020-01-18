@@ -53,7 +53,7 @@ class PhotoUpload extends React.Component {
                     <div className='row'>
                         <div className='file-field input-field inline s6'>
                             <div className = 'file-path-wrapper'>
-                                <input className = 'file-path validate' onChange={this.handleFileInput} type = 'text' />
+                                <input className = 'file-path validate' type = 'text' />
                             </div>
                             <div className='btn'>
                                 <span> File </span> 
@@ -64,19 +64,7 @@ class PhotoUpload extends React.Component {
                             </button>
                         </div>
                     </div>
-
-    </form>
-
-
-
-
-
-
-                
-                {/* // <form className='box' onSubmit={this.handleSubmit} >
-                //     <input type='file' onChange={this.handleFileInput} />
-                //     <input type='submit' value='Upload' />
-                // </form>  */}
+                </form>
             </div>
         )
     }  

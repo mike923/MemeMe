@@ -1,5 +1,6 @@
 import React , {Component} from 'react'
 import axios from 'axios'
+import '../CSS/SearchBar.css'
 
 class SearchBar extends Component {
     constructor(props){
@@ -55,12 +56,15 @@ class SearchBar extends Component {
     render(){
         const {user_id, searchValue} = this.state
         return (
-            <div>
-                <form onSubmit={this.searchResultNetworkRequest}>
-                    <input type= 'search' value={searchValue} onChange={this.handleSearch}></input>
+            <div className="nav-wrapper row searchbar">
+                <form className='col s8 offset-s2' onSubmit={this.searchResultNetworkRequest}>
+                    <div className="input-field col s12">
+                    <input id="search" type="search" className='' value={searchValue} onChange={this.handleSearch} placeholder='search' required/>
+                    <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+                    <i className="material-icons">close</i>
+                    </div>
                 </form>
             </div>
-            
         )
     }
     
