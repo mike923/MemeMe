@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import LikeButton from '../Components/LikeButton'
+import DeleteButton from '../Components/DeleteButton'
 import axios from 'axios'
 import '../CSS/Photo.css'
 import CaptionsSection from './CaptionsSection'
@@ -11,7 +12,8 @@ class Photo extends Component {
         this.state = {
             url: this.props.url,
             id: this.props.photo_id,
-            caption: 'loading...'
+            caption: 'loading...',
+            delPost: this.props.delPost
         }
     }
 
@@ -30,7 +32,7 @@ class Photo extends Component {
     }
 
     render() {
-        let {caption, url} = this.state
+        let {caption, url, delPost} = this.state
 
         return (<>
             <Link className='meme'>
@@ -48,6 +50,7 @@ class Photo extends Component {
                 </span>
             </Link>
             <LikeButton />
+            {delPost? <DeleteButton/> : ''}
             <CaptionsSection />
         </>)
     }

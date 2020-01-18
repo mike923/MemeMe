@@ -94,7 +94,7 @@ class UserProfile extends Component {
           </div>
         </div>
         <h3>My photos go here</h3>
-        <SubFeed photos={photos} />
+        <SubFeed photos={photos} delPost={true} />
       </div>
     );
   }
