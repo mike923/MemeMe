@@ -8,7 +8,7 @@ router.get("/photos/:photo_id", async (req, res, next) => {
   console.log(`you've hit captions/photo_id`);
   try {
     let captions = await db.any(`
-            SELECT *
+            SELECT * 
             FROM captions
             WHERE photo_id = ${req.params.photo_id}
         `);
@@ -48,7 +48,7 @@ router.get("/search/:text", async (req, res, next) => {
   const {text} = req.params;
   try {
     let captions = await db.any(`
-            SELECT picture_url FROM captions
+            SELECT DISTINCT picture_url FROM captions
             INNER JOIN photos
             ON photos.id = captions.photo_id
             WHERE LOWER(body) LIKE $/search/
