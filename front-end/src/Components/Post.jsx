@@ -16,8 +16,11 @@ class Post extends Component {
             commentSection: [],
         }
     }
-
     componentDidMount = async () => {
+        await this.loadCaptions()
+    }
+    
+    loadCaptions = async () => {
         const {id, commentSection} = this.state
         const commentArray = []
         console.log('this.props in post.jsx', this.props)
@@ -29,17 +32,18 @@ class Post extends Component {
             console.log(error)
         }
     }
+
     
     render() {
         let {
-            state:{loggedIn, commentSection},
+            state:{loggedIn, commentSection, id},
         }=this
 
         if (!loggedIn) return(<Redirect to='/login' />)
         return(
             <div className='postcss'>
                 <SlideShow commentSection={commentSection}/>
-                <InputCaption commentSection={commentSection}/>
+                <InputCaption id={id} load={this.loadCaptions} commentSection={commentSection}/>
                 <CaptionsSection commentSection={commentSection}/>
             </div>
         )
