@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
+        <>
         <nav className="NavBar">
-              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-             
+            
+            {/* <img src = 'https://toppng.com/uploads/preview/trollface-transparent-troll-face-11563021387zkvgkht8a9.png' width= '50px' /> 
+          */}
             {/* <Link to="/post"
             > post  </Link> */}
             <br />
@@ -23,7 +25,12 @@ const NavBar = () => {
             <br/>
             <Link to="/LogOut"> <i class="large material-icons"
             >exit_to_app</i></Link>
+            
         </nav>
+        <br/>
+        <br/>
+        
+        </>
     );
 };
 
