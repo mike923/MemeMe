@@ -10,7 +10,7 @@ const NavBar = () => {
             > post  </Link>
             <br />
             <Link to="/feed"> <i class="large material-icons"
-            >insert_chart</i> </Link>
+            >explore</i> </Link>
             <br />
             <Link to="/photocomp">photo</Link>
             <br />
