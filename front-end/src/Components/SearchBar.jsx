@@ -9,6 +9,7 @@ class SearchBar extends Component {
             user_id : this.props.userIdLoggedIn,
             searchValue: '',
             photoFeed: this.props.photoFeed
+
         }
     }
 
@@ -48,6 +49,9 @@ class SearchBar extends Component {
                 const {data:{payload}} = await axios.get(`http://localhost:3001/captions/search/${searchValue}`)
                 console.log('payload',payload)
                 await this.updateSearchArray(payload, !!searchValue.length)
+                this.setState({
+                    
+                })
             } catch(error){ 
                 console.log('err', error)
             }

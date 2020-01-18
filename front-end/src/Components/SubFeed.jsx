@@ -6,7 +6,8 @@ class SubFeed extends Component{
         super(props)
         this.state = {
             photos: this.props.photos,
-            delPost: this.props.delPost
+            delPost: this.props.delPost,
+            updateSearchArray: this.props.updateSearchArray
         }
     }
 
