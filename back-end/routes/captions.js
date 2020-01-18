@@ -8,7 +8,7 @@ router.get("/photos/:photo_id", async (req, res, next) => {
     console.log(`you've hit captions/photo_id`);
     try {
         let captions = await db.any(`
-            SELECT * 
+            SELECT captions.id AS cap_id, * 
             FROM captions
             INNER JOIN users
             ON captions.commenter_id = users.id

@@ -3,6 +3,7 @@ import axios from 'axios'
 import '../CSS/CaptionSection.css'
 import { Route, Link, Redirect } from 'react-router-dom'
 import Feed from './Feed'
+import LikeButton from './LikeButton'
 // import { Link, Redirect } from 'react-router-dom'
 
 class CaptionsSection extends Component {
@@ -24,7 +25,7 @@ class CaptionsSection extends Component {
                 </Link>
                 <span className="title">{caption.firstname}</span>
                 <p>{caption.body}</p>
-                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+                <LikeButton id={caption.cap_id}/>
             </li>
         )
     }
