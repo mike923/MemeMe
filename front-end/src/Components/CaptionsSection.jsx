@@ -9,7 +9,7 @@ class CaptionsSection extends Component {
         this.state = {
             // loggedIn: this.props.userIdLoggedIn,
             id: this.props.caption_id,
-            commentSection: []
+            commentSection: [],
         }
     }
 
@@ -27,6 +27,7 @@ class CaptionsSection extends Component {
 
     componentDidMount = async () => {
         const {id, commentSection} = this.state
+        
         const commentArray = []
         try {
             let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
