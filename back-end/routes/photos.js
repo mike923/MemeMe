@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/all', async (req, res, next) => {
   console.log('Getting all photos. Please standby')
   try{
-    let photos = await db.any('SELECT * FROM photos WHERE active= true')
+    let photos = await db.any('SELECT *, id AS photo_id FROM photos WHERE active= true')
     // let photos = await db.any(`
     // SELECT * 
     // FROM captions 
