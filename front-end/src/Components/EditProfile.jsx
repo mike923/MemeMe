@@ -8,8 +8,10 @@ class EditProfile extends Component {
         this.initialState = {
             id: this.props.userIdLoggedIn,
             bio: 'this is my bio its not much but it will be soon.',
+            email: 'email@domain.org',
             firstname: 'firstname',
             displayname: 'displayname',
+            user_password: 'Password',
             profilepic: 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic.png',
         }
         this.state = this.initialState
@@ -62,50 +64,104 @@ class EditProfile extends Component {
             handleSubmit,
             handleFileInput,
         } = this
-
+        
         if (redirect) return (<Redirect to='/user' />)
-        return (
-            <form className='box' onSubmit={handleSubmit}>
-                <img src={profilepic} alt="profile picture" height="150px" />
-                <input 
-                    onChange={handleInput} 
-                    type='text' 
-                    name="email" 
-                    placeholder="email" 
-                    value={email}  
-                />
-                <input 
-                    onChange={handleInput} 
-                    type='password' 
-                    name="user_password" 
-                    placeholder="user_password" 
-                    value={user_password}  
-                />
-                <input 
-                    onChange={handleInput} 
-                    type='text' 
-                    name="displayname" 
-                    placeholder="displayname" 
-                    value={displayname}  
-                />
-                <input 
-                    onChange={handleInput} 
-                    type='text' 
-                    name="firstname" 
-                    placeholder="firstname" 
-                    value={firstname}  
-                />
-                <input 
-                    onChange={handleInput} 
-                    type='text' 
-                    name="bio" 
-                    placeholder="bio" 
-                    value={bio}  
-                />
-                <input type='file' name='profiePic' onChange={handleFileInput} />
-                <button type='submit' >Save</button>
-            </form>
-        )
+        return (<>
+            <div className="container">
+                <div className="row">
+                        <img src={profilepic} className='responsive-image' alt="profile picture" height="150px" />
+                    <form className="col s12 offset-s2" id="reg-form" onSubmit={handleSubmit}>
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <input
+                                    type="text"
+                                    id="displayname"
+                                    name="displayname"
+                                    value={displayname}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                />
+                                <label htmlFor="displayname">Username </label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <input
+                                    type="text"
+                                    id="firstname"
+                                    name="firstname"
+                                    value={firstname}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                />
+                                <label htmlFor="firstname">Full Name </label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                />
+                                <label htmlFor="email">Email </label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <input
+                                    type="password"
+                                    id="user_password"
+                                    name="user_password"
+                                    value={user_password}
+                                    onChange={handleInput}
+                                    className="validate"
+                                    required
+                                />
+                                <label htmlFor="user_password">Password </label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <textarea
+                                    type="text"
+                                    id="bio"
+                                    name="bio"
+                                    value={bio}
+                                    onChange={handleInput}
+                                    className="materialize-textarea"
+                                ></textarea>
+                                <label htmlFor="bio">Tell Us About Yourself </label>
+                            </div>
+                        </div>
+                        <div className='row'>
+                            <div className='file-field input-field col s8'>
+                                <div className='btn'>
+                                    <span> Profile Picture </span> 
+                                    <input type ='file' onChange={this.handleFileInput} />
+                                </div>
+                                <div className = 'file-path-wrapper'>
+                                    <input className = 'validate' onChange={this.handleFileInput} type = 'text' />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s8">
+                                <button className="btn btn-large btn-register waves-effect waves-light" type="submit" name="action">Save
+                                    <i className="material-icons right">done</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </>);
     }
 
 }
