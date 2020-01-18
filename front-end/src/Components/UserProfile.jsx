@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import Photo from "../Components/Photo.jsx";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
+import PhotoUpload from "./PhotoUpload.jsx";
 import SubFeed from "./SubFeed.jsx";
 
 class UserProfile extends Component {
