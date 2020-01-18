@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 
-class LikeButton extends Component {
+class DeleteButton extends Component {
   constructor(props) {
     super(props);
     this.initialState = {
@@ -37,4 +37,4 @@ class LikeButton extends Component {
   }
 }
 
-export default LikeButton;
+export default DeleteButton;

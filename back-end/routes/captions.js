@@ -80,6 +80,7 @@ router.get("/search/:text", async (req, res, next) => {
 
 router.post("/photos", async (req, res) => {
     const {photo_id, commenter_id, body}= req.body;
+    console.log(req.body)
     try {
         let insertQuery = `INSERT into captions(photo_id, commenter_id, body, active)
                                 VALUES($1, $2, $3, $4)`;
@@ -88,9 +89,9 @@ router.post("/photos", async (req, res) => {
                 message: "information Missing"
             });
         } else {
-            await db.one(insertQuery, [
-                photo_id,
-                commenter_id,
+            await db.none(insertQuery, [
+                Number(photo_id),
+                Number(commenter_id),
                 body,
                 true
             ]);
