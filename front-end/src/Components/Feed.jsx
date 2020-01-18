@@ -27,6 +27,7 @@ class Feed extends Component {
     }
 
     updateSearchArray = (searchFeedArray, searched) => {
+        console.log('searchFeedArr',searchFeedArray)
         this.setState({searchFeedArray: searchFeedArray, searched: searched})
        
     }
