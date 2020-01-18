@@ -53,8 +53,8 @@ class App extends Component {
 
                 {userIdLoggedIn ? (
                     <Switch>
-                        <Route path="/post" 
-                            render={() => <Post userIdLoggedIn={userIdLoggedIn}/>} 
+                        <Route path="/post/:id" 
+                            render={(props) => <Post id={props.match.params.id} userIdLoggedIn={userIdLoggedIn}/>} 
                         />
                         <Route path="/EditProfile"
                             render={() => <EditProfile userIdLoggedIn={userIdLoggedIn} />}
@@ -62,8 +62,11 @@ class App extends Component {
                         <Route path="/photocomp" 
                             render={() => <Photo userIdLoggedIn={userIdLoggedIn}/>} 
                         />
+                        <Route path="/user/:username" 
+                            render={(props) => <UserProfile username={props.match.params.username} userIdLoggedIn={userIdLoggedIn}/>} 
+                        />
                         <Route path="/user" 
-                            render={() => <UserProfile userIdLoggedIn={userIdLoggedIn}/>} 
+                            render={(props) => <UserProfile userIdLoggedIn={userIdLoggedIn}/>} 
                         />
                         <Route path="/feed" 
                             render={()=> <Feed userIdLoggedIn={userIdLoggedIn}/>} 

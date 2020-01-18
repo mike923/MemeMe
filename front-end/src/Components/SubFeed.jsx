@@ -11,10 +11,6 @@ class SubFeed extends Component{
         }
     }
 
-    // componentDidMount = async () => {
-    //     this.setState({ photos: this.props.photos})
-    // }
-
     turnPhoto = (img) => {
         const {delPost} = this.props
         return (
@@ -34,6 +30,10 @@ class SubFeed extends Component{
         )
     }
 
+    linkToPhoto = (event) => {
+        console.log(event.currentTarget)
+    }
+
     render() {
         let {props:{photos}, turnPhoto} = this
         console.log('props', this.props)
@@ -44,7 +44,7 @@ class SubFeed extends Component{
                 <div className='section'>
                     <div className='row'>
                         <div className='col s12'>
-                            <div className='section'>
+                            <div className='section' onClick={this.linkToPhoto}>
                                 {photos.map(turnPhoto)}
                             </div>
                         </div>

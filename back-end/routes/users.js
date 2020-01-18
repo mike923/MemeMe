@@ -52,7 +52,7 @@ router.get("/:id", async (req, res, next) => {
       user
     });
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "user does not exist",
       error
     });
@@ -97,10 +97,10 @@ router.get("/name/:displayname", async (req, res) => {
 
     res.json({
       message: user.active ? "success user is active" : "user is inactive",
-      payload: user
+      user
     });
   } catch (error) {
-    res.json({
+    res.status(400).json({
       message: "user does not exist",
       error
     });
