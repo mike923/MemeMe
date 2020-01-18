@@ -40,6 +40,27 @@ router.get('/all', async (req, res, next) => {
   }
 });
 
+router.get('/:id', async (req, res, next) => {
+  console.log('Getting photo by poster id. Please standby')
+  
+  const {id} = req.params
+  try{
+    const photo = await db.one(`SELECT * FROM photos WHERE id = $1 AND active = true`, [id])
+    res.json ({
+      photo,
+      message: 'Success getting photo',
+      success: true
+    })
+  } catch(error){
+    res.json({
+      message: 'Error something went wrong',
+      success: false
+    })
+    console.log('err', error)
+  }
+
+})
+
 
 router.get('/user/:poster_id', async (req, res, next) => {
   console.log('Getting photo by poster id. Please standby')

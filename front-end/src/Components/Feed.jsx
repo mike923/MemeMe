@@ -65,9 +65,6 @@ class Feed extends Component {
                 <br></br>
                 <h3>Feed</h3> 
                 <SubFeed photos={searched ? searchFeedArray : photoFeedArray}/>  
-                {/* <div className='photoFeed'>
-                    <ul className='photos'>{searched ? searchFeedArray.map(turnPhoto) : photoFeedArray.map(turnPhoto)}</ul>
-                </div> */}
             </div>
         )
     }

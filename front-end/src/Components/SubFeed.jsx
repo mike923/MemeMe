@@ -6,13 +6,10 @@ class SubFeed extends Component{
         super(props)
         this.state = {
             photos: this.props.photos,
-            delPost: this.props.delPost
+            delPost: this.props.delPost,
+            updateSearchArray: this.props.updateSearchArray
         }
     }
-
-    // componentDidMount = async () => {
-    //     this.setState({ photos: this.props.photos})
-    // }
 
     turnPhoto = (img) => {
         const {delPost} = this.props
@@ -33,6 +30,10 @@ class SubFeed extends Component{
         )
     }
 
+    linkToPhoto = (event) => {
+        console.log(event.currentTarget)
+    }
+
     render() {
         let {props:{photos}, turnPhoto} = this
         console.log('props', this.props)
@@ -43,7 +44,7 @@ class SubFeed extends Component{
                 <div className='section'>
                     <div className='row'>
                         <div className='col s12'>
-                            <div className='section'>
+                            <div className='section' onClick={this.linkToPhoto}>
                                 {photos.map(turnPhoto)}
                             </div>
                         </div>
