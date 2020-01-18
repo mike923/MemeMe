@@ -47,11 +47,7 @@ class UserProfile extends Component {
       console.log("There was an error retieving user photos");
     }
   };
-  handleEdit = async event => {
-    console.log(event.target.value, "pressing edit button");
-    this.props.history.push("/EditProfile");
-    //return <Redirect to="/EditProfile" />;
-  };
+
 
   render() {
     let {
@@ -69,6 +65,7 @@ class UserProfile extends Component {
     if (!loggedIn) return <Redirect to="/login" />;
     return (
       <div className="container">
+        
         {/* <div>
           <h2>{displayname}</h2>
           <img src={profilepic} alt={profilePicAlt} height="150px" />
@@ -96,7 +93,8 @@ class UserProfile extends Component {
                 <p> {bio}</p>
               </div>
               <div class="card-action">
-                <a href="#"> Edit Profile</a>
+                <Link to="/EditProfile"> Edit Profile </Link>
+                <Link to="/PhotoUplaod"> Upload Photo </Link>
               </div>
             </div>
           </div>
