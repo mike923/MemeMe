@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
@@ -6,7 +6,6 @@
     color: white;
     background-image: url('../css-images/light-wool.png');
 }
-
 .box{
     width: 370px;
     padding: 40px;
@@ -18,20 +17,16 @@
     text-align: center;
     border-radius: 25px;
 }
-
 .box h2{
     color: honeydew;
     text-transform: uppercase;
     font-weight: 500;
     background: #191919;
-
 }
-
 .box textarea{
     column-span: 200px;
     resize: vertical;
 }
-
 .box input, .box textarea{
     border: 0;
     background: none;
@@ -46,12 +41,10 @@
     border-radius: 24px;
     transition: 0.25s;
 }
-
 .box input:focus, .box textarea:focus{
     width: 280px;
     border-color: hotpink;
 }
-
 .box button[type = 'submit']{
     border: 0;
     background: none;
@@ -65,12 +58,14 @@
     border-radius: 24px;
     transition: 0.25s;
 }
-
 .box button[type = 'submit']:hover{
     background: hotpink;
 }
-
 .box .link, form a{
     color: white;
     background: #191919;
+} */
+
+h2{
+    font-family: monaco;
 }

@@ -21,7 +21,7 @@ class Photo extends Component {
         let {id} = this.state
         try {
             let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
-            // console.log('getting', captions)
+
             this.setState({caption: captions[0].body})
         } catch(error) {
             this.setState({
@@ -32,24 +32,32 @@ class Photo extends Component {
     }
 
     render() {
-        let {caption, url, delPost} = this.state
+        let {caption} = this.state
+        let { url, delPost, photo_id} = this.props
+        console.log('these are supposed to be our props', this.props)
+
+//         let {caption, url, delPost, id, } = this.state
 
         return (<>
-            <Link className='meme'>
+            <Link className='meme' to={'/post/'+photo_id}>
                 <img 
+                    
                     src={url}
                     className="meme" 
                     alt={caption}
                     title={caption}
                     width="305" 
                     height="229" 
+                    // value={photo_id}
                 />
                 <span className="top p">
                     {caption}
                     <div></div>
                 </span>
             </Link>
-            <LikeButton />
+            {/* <LikeButton 
+            id ={id}/> */}
+            
             {delPost? <DeleteButton/> : ''}
             <CaptionsSection />
         </>)
