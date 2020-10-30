@@ -31,7 +31,7 @@ class EditProfile extends Component {
         data.append('imgURL', this.state.imageFile)
         
         try {
-            let {data} = await axios.patch(`http://localhost:3001/users/${id}`, payload)
+            await axios.patch(`http://localhost:3001/users/${id}`, payload)
             this.setState({ redirect: true })
         } catch(error) {
             console.log('user patch error:', error)
@@ -62,7 +62,6 @@ class EditProfile extends Component {
             },
             handleInput,
             handleSubmit,
-            handleFileInput,
         } = this
         
         if (redirect) return (<Redirect to='/user' />)

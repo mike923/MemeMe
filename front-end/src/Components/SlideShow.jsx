@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import BigPhoto from './BigPhoto'
 import { Fade } from 'react-slideshow-image';
 
-const fadeImages = [
-    'file:///Users/michaeld.amparo/Desktop/core/unit_4_reactt/group_project_01052020/MemeMe%202/front-end/public/logo512.png'
-];
+// const fadeImages = [
+//     'file:///Users/michaeld.amparo/Desktop/core/unit_4_reactt/group_project_01052020/MemeMe%202/front-end/public/logo512.png'
+// ];
 
 const fadeProperties = {
     duration: 5000,

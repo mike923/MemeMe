@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import Photo from "../Components/Photo.jsx";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
-import PhotoUpload from "./PhotoUpload.jsx";
 import SubFeed from "./SubFeed.jsx";
 
 class UserProfile extends Component {
@@ -79,12 +77,10 @@ class UserProfile extends Component {
                     bio,
                     firstname,
                     profilepic,
-                    displayname,
                 },
                 photos,
                 loggedIn,
                 profilePicAlt,
-                location
             }
         } = this;
 
@@ -103,7 +99,7 @@ class UserProfile extends Component {
 
 
                 <div className="col s12 m7">
-                    <h2 className="header"> {displayname}</h2>
+                    {/* <h2 className="header"> {displayname}</h2> */}
                     <div className="card horizontal">
                         <div className="card-image">
                             <img src={profilepic} alt={profilePicAlt} height="200px" />

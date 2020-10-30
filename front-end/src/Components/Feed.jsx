@@ -46,13 +46,11 @@ class Feed extends Component {
     render() {
         let {
             state: {
-                profilePicAlt,
                 photoFeedArray,
                 loggedIn,
                 searchFeedArray,
                 searched,
             },
-            turnPhoto,
             updateSearchArray,
         } = this    
 

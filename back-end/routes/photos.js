@@ -67,7 +67,7 @@ router.get('/user/:poster_id', async (req, res, next) => {
  
   const {poster_id} = req.params
   try{
-    const photos = await db.any(`SELECT * FROM photos WHERE poster_id = $1 AND active = true`, [poster_id])
+    const photos = await db.any(`SELECT *, id as photo_id FROM photos WHERE poster_id = $1 AND active = true`, [poster_id])
     res.json ({
       payload: photos,
       message: 'Success getting photo',

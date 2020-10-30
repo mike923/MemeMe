@@ -55,7 +55,7 @@ class SearchBar extends Component {
     }
     
     render(){
-        const {user_id, searchValue} = this.state
+        const {searchValue} = this.state
         return (
             <div className="nav-wrapper row searchbar">
                 <form className='col s8 offset-s2' onSubmit={this.searchResultNetworkRequest}>

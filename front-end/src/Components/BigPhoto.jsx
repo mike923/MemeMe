@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import LikeButton from '../Components/LikeButton'
-import DeleteButton from '../Components/DeleteButton'
 import axios from 'axios'
 import '../CSS/Photo.css'
-import CaptionsSection from './CaptionsSection'
 
 class BigPhoto extends Component {
     constructor(props) {
@@ -22,9 +18,9 @@ class BigPhoto extends Component {
         let {id} = this.state
 
         try {
-            let {data} = await axios.get(`http://localhost:3001/photos/${id}`)
+            await axios.get(`http://localhost:3001/photos/${id}`)
         } catch(error) {
-
+            
         }
     }
 

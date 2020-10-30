@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 import axios from "axios";
 import "../CSS/Landing.css";
 import { toast } from "react-toastify";
@@ -54,7 +54,7 @@ class Landing extends Component {
       state: { email, user_password, redirect, error },
       submitForm,
       handleInput,
-      notify
+      // notify
     } = this;
 
     toast.configure({

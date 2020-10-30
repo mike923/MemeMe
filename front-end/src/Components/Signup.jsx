@@ -55,7 +55,6 @@ class Signup extends Component {
                 firstname, 
                 displayname, 
                 user_password,
-                redirect,
                 loggedIn,
             },
             submitForm,

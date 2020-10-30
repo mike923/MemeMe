@@ -21,8 +21,7 @@ class Post extends Component {
     }
     
     loadCaptions = async () => {
-        const {id, commentSection} = this.state
-        const commentArray = []
+        const {id} = this.state
         console.log('this.props in post.jsx', this.props)
         try {
             let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)

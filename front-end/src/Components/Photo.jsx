@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import LikeButton from '../Components/LikeButton'
 import DeleteButton from '../Components/DeleteButton'
 import axios from 'axios'
 import '../CSS/Photo.css'
