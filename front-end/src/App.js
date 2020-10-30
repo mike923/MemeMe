@@ -10,7 +10,6 @@ import Signup from "./Components/Signup";
 import NavBar from "./Components/NavBar";
 import Landing from "./Components/Landing";
 import UserProfile from "./Components/UserProfile";
-//import UserProfile from "./test/test_user_profile";
 import PhotoUpload from "./Components/PhotoUpload";
 import EditProfile from "./Components/EditProfile";
 // import './App.css';
