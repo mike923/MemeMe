@@ -31,6 +31,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(_dirname, '../front-end/build')))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/sessions', sessionsRouter);
@@ -96,5 +97,8 @@ app.patch('/users/upload/:poster_id', upload.single('imgURL'), async (req, res, 
 })
 app.use('/users', usersRouter);
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(_dirname, "front-end/build/index.html"))
+}) 
 
 module.exports = app;
