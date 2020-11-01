@@ -119,3 +119,4 @@ VALUES
     (false, 1, 25, true),
     (true, 2, 22, true),
     (true, 4, 20, true);
+    
