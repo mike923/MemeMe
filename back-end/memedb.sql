@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS memedb;
+-- DROP DATABASE IF EXISTS memedb;
 
-CREATE DATABASE memedb;
+-- CREATE DATABASE memedb;
 
-\c memedb;
+-- \c memedb;
 
 
 CREATE TABLE users( 
