@@ -4,8 +4,8 @@
   "description": "Text goes here",
   "main": "index.js",
   "scripts": {
-    "start": "cd backend && npm start",
-    "heroku-pre-build": "cd backend && npm install && cd ../front-end && npm install && npm run build",
+    "start": "cd back-end && npm start",
+    "heroku-pre-build": "cd back-end && npm install && cd ../front-end && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
