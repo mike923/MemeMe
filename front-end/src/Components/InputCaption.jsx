@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {url} from '../apiURL'
 import axios from 'axios'
 
 class InputCaption extends Component {
@@ -17,7 +18,7 @@ class InputCaption extends Component {
         event.preventDefault()
         console.log(this.props.id)
         try {
-            let {data} = await axios.post(`http://localhost:3001/captions/photos`, {photo_id: this.props.id, commenter_id: this.state.id, body:this.state.caption})
+            let {data} = await axios.post(`${url}/captions/photos`, {photo_id: this.props.id, commenter_id: this.state.id, body:this.state.caption})
             console.log(data)
             this.setState({caption:''})
             this.props.load()
@@ -30,7 +31,7 @@ class InputCaption extends Component {
     componentDidMount = async () => {
         let id = sessionStorage.getItem('id')
         try {
-            let {data:{user}} = await axios.get(`http://localhost:3001/users/${id}`)
+            let {data:{user}} = await axios.get(`${url}/users/${id}`)
             console.log(user)
             this.setState(user)
         } catch(error) {

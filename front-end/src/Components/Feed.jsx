@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Photo from '../Components/Photo'
 import SearchBar from '../Components/SearchBar'
 import SubFeed from '../Components/SubFeed'
+import {url} from '../apiURL'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import '../CSS/Feed.css'
@@ -21,7 +22,7 @@ class Feed extends Component {
     }
     
     componentDidMount = async () => {
-        let {data: {payload}} = await axios.get('http://localhost:3001/photos/all')
+        let {data: {payload}} = await axios.get(`${url}/photos/all`)
         console.log(payload)
         this.setState({ photoFeedArray: payload })
     }

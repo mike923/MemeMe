@@ -98,7 +98,7 @@ app.patch('/users/upload/:poster_id', upload.single('imgURL'), async (req, res, 
 app.use('/users', usersRouter);
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(_dirname, "front-end/build/index.html"))
+    res.sendFile(path.join(__dirname, "../front-end/build/index.html"))
 }) 
 
 module.exports = app;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Route, Redirect } from "react-router-dom";
 import axios from "axios";
+import {url} from '../apiURL'
 import "../CSS/Landing.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,7 +28,7 @@ class Landing extends Component {
     try {
       let {
         data: { user }
-      } = await axios.post("http://localhost:3001/users/specific/active", {
+      } = await axios.post(`${url}/users/specific/active`, {
         email,
         user_password
       });

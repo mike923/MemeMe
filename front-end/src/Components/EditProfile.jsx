@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {url} from '../apiURL'
 import axios from 'axios'
 import {withRouter, Redirect} from 'react-router-dom'
 
@@ -18,7 +19,7 @@ class EditProfile extends Component {
     }
 
     componentDidMount = async () => {
-        let { data: { user } } = await axios.get(`http://localhost:3001/users/${this.state.id}`)
+        let { data: { user } } = await axios.get(`${url}/users/${this.state.id}`)
         this.setState(user)
     }
     
@@ -31,14 +32,14 @@ class EditProfile extends Component {
         data.append('imgURL', this.state.imageFile)
         
         try {
-            let {data} = await axios.patch(`http://localhost:3001/users/${id}`, payload)
+            let {data} = await axios.patch(`${url}/users/${id}`, payload)
             this.setState({ redirect: true })
         } catch(error) {
             console.log('user patch error:', error)
         }   
         
         try{
-            const {data: {payload}} = await axios.patch(`http://localhost:3001/users/upload/${id}`, data)
+            const {data: {payload}} = await axios.patch(`${url}/users/upload/${id}`, data)
             this.setState ({ profilepic: payload })
         } catch(error) {
             console.log('profile pic change error:', error)

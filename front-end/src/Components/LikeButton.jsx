@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {url} from '../apiURL'
 import axios from 'axios'
 // import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 
@@ -19,7 +20,7 @@ class LikeButton extends Component {
     
     reloadLikes = async () => {
         try {
-            let {data} = await axios.get(`http://localhost:3001/likes/captions/${this.props.id}/liker/${sessionStorage.getItem('id')}`)
+            let {data} = await axios.get(`${url}/likes/captions/${this.props.id}/liker/${sessionStorage.getItem('id')}`)
             console.log(data)
             this.setState({liked: data.data.like_value})
         } catch(error) {
@@ -37,7 +38,7 @@ class LikeButton extends Component {
         //     liked: !liked
         // })   
         try{
-            let {data} = await axios.post(`http://localhost:3001/likes/captions/${this.props.id}`, {like_value: liked, liker_id: sessionStorage.getItem('id')})
+            let {data} = await axios.post(`${url}/likes/captions/${this.props.id}`, {like_value: liked, liker_id: sessionStorage.getItem('id')})
             console.log(data)
             this.setState({liked: !this.state.liked})
         } catch(error) {
