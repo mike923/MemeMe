@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Route, Redirect } from "react-router-dom";
 import axios from "axios";
-import {url} from '../apiURL'
+import url from '../apiURL'
 import "../CSS/Landing.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

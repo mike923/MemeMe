@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {url} from '../apiURL'
+import url from '../apiURL'
 import axios from 'axios'
 import {withRouter, Redirect} from 'react-router-dom'
 

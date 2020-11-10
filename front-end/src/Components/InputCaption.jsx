@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {url} from '../apiURL'
+import url from '../apiURL'
 import axios from 'axios'
 
 class InputCaption extends Component {
