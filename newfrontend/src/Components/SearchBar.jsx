@@ -60,7 +60,7 @@ class SearchBar extends Component {
             <div className="nav-wrapper row searchbar">
                 <form className='col s8 offset-s2' onSubmit={this.searchResultNetworkRequest}>
                     <div className="input-field col s12">
-                    <input id="search" type="search" className='' value={searchValue} onChange={this.handleSearch} placeholder='search' required/>
+                    <input id="search" type="search" className='' value={searchValue} onChange={this.handleSearch} required/>
                     <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
                     <i className="material-icons">close</i>
                     </div>

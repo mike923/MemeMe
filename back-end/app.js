@@ -46,7 +46,7 @@ app.post('/photos/upload/:poster_id', upload.single('imgURL'), async (req, res, 
     const {poster_id} = req.params
     // const {date_posted} = req.body
     let rootURL = 'http://localhost:3001/'
-    
+
     if(process.env.NODE_ENV === 'production'){
         rootURL = 'https://aqueous-sierra-27538.herokuapp.com/'
     }
@@ -77,6 +77,12 @@ app.patch('/users/upload/:poster_id', upload.single('imgURL'), async (req, res, 
     const {poster_id} = req.params
     // const {date_posted} = req.body
     // const setQuery = 'profile'
+    
+    let rootURL = 'http://localhost:3001/'
+    
+    if(process.env.NODE_ENV === 'production'){
+        rootURL = 'https://aqueous-sierra-27538.herokuapp.com/'
+    }
     let imgURL = 'http://localhost:3001/' + req.file.path.replace('public/', '')
     let inputQuery = `
         UPDATE users

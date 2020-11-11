@@ -11,7 +11,7 @@ const NavBar = () => {
             {/* <Link to="/post"
             > post  </Link> */}
             <br />
-            <Link to="/feed"> <i class="large material-icons"
+            <Link to="/feed"> <i className="large material-icons"
             >explore</i> </Link>
             <br />
             {/* <Link to="/photos/upload"><i class="large material-icons"

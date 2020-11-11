@@ -35,7 +35,7 @@ class App extends Component {
                     <Link to="/post">post</Link><br/>
                     <Link to="/photocomp">photo</Link><br/>
                     <Link to="/photos/upload">upload</Link><br/>
-                    <Link to="/user">user</Link>
+                    {/* <Link to="/user">user</Link> */}
                 </nav>
                 <Landing changeID={changeID}/>
             </div>
