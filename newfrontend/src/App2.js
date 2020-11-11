@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom'
-import Signup from './Components/Signup'
-import Feed from './Components/Feed'
-import Post from './Components/Post'
-import UserProfile from './Components/UserProfile'
+import { Link} from 'react-router-dom'
 import Landing from './Components/Landing'
-import PhotoUpload from './Components/PhotoUpload'
-import Photo from './Components/Photo'
 import './App.css';
 
 

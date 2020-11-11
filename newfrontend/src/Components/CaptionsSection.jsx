@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import '../CSS/CaptionSection.css'
-import { Route, Link, Redirect } from 'react-router-dom'
-import Feed from './Feed'
+import { Link, Redirect } from 'react-router-dom'
 import LikeButton from './LikeButton'
 // import { Link, Redirect } from 'react-router-dom'
 

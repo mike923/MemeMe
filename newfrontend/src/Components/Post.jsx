@@ -4,6 +4,7 @@ import SlideShow from './SlideShow'
 import CaptionsSection from './CaptionsSection'
 import InputCaption from './InputCaption'
 import { Redirect } from 'react-router-dom'
+import url from '../apiURL'
 import '../CSS/Post.css'
 
 class Post extends Component {
@@ -21,11 +22,11 @@ class Post extends Component {
     }
     
     loadCaptions = async () => {
-        const {id, commentSection} = this.state
+        const {id} = this.state
         const commentArray = []
         console.log('this.props in post.jsx', this.props)
         try {
-            let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
+            let {data: {captions}} = await axios.get(`${url}/captions/photos/${id}`)
             console.log('this should be all captions', captions)
             this.setState({commentSection: captions})
         } catch(error) {

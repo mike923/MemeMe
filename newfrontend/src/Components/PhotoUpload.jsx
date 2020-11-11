@@ -11,13 +11,6 @@ class PhotoUpload extends React.Component {
             imgURL: '',
         }
     }  
- 
-    // handlePicturePreview = (event) => {
-    //     console.log(imgURL)
-    //     return (
-    //         <img src={imgURL}></img>
-    //     )
-    // }
 
 
     handleFileInput = (event) => {
@@ -37,7 +30,7 @@ class PhotoUpload extends React.Component {
         console.log(data)
         // data.append('date_posted', this.state.date_posted)
         try{
-            const response = await axios.post(`http://localhost:3001/photos/upload/${user_id}`, data)
+            const response = await axios.post(`${url}/photos/upload/${user_id}`, data)
             console.log(response.data)
             this.setState ({
                 imgURL: response.data,

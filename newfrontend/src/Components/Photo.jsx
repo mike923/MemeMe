@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import LikeButton from '../Components/LikeButton'
 import DeleteButton from '../Components/DeleteButton'
+import url from '../apiURL'
 import axios from 'axios'
 import '../CSS/Photo.css'
 import CaptionsSection from './CaptionsSection'
@@ -20,7 +20,7 @@ class Photo extends Component {
     componentDidMount = async () => {
         let {id} = this.state
         try {
-            let {data: {captions}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
+            let {data: {captions}} = await axios.get(`${url}/captions/photos/${id}`)
 
             this.setState({caption: captions[0].body})
         } catch(error) {

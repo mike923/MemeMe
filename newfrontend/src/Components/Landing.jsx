@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import url from '../apiURL'
 import "../CSS/Landing.css";
