@@ -31,8 +31,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../front-end/build')))
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../newfrontend/build')))
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/sessions', sessionsRouter);
 app.use('/captions', captionsRouter);
@@ -109,7 +109,7 @@ app.patch('/users/upload/:poster_id', upload.single('imgURL'), async (req, res, 
 app.use('/users', usersRouter);
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../front-end/build/index.html"))
+    res.sendFile(path.join(__dirname, "../newfrontend/build/index.html"))
 }) 
 
 module.exports = app;
