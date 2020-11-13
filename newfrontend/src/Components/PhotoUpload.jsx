@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import url from '../apiURL'
 import { toast } from 'react-toastify'
 
 class PhotoUpload extends React.Component {

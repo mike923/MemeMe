@@ -1,4 +1,5 @@
 import React , {Component} from 'react'
+import url from '../apiURL'
 import axios from 'axios'
 import '../CSS/SearchBar.css'
 
@@ -20,19 +21,9 @@ class SearchBar extends Component {
         })
     }
 
-    // handleSubmit = async (e) => {
-    //     const {searchValue} = this.state
-
-    //     if (searchValue.length > 0){
-    //         this.searchResultNetworkRequest()
-    //     } else{
-    //         console.log('nothing')
-    //     } 
-    // }
-
     grabImage = async (id) => {
         try {
-            const {data:{payload}} = await axios.get(`http://localhost:3001/captions/photos/${id}`)
+            const {data:{payload}} = await axios.get(`${url}/captions/photos/${id}`)
             console.log(payload)
         } catch(error) {
             console.log('err', error)
@@ -46,7 +37,7 @@ class SearchBar extends Component {
         
         const {searchValue} = this.state
             try{
-                const {data:{payload}} = await axios.get(`http://localhost:3001/captions/search/${searchValue}`)
+                const {data:{payload}} = await axios.get(`${url}/captions/search/${searchValue}`)
                 console.log('payload',payload)
                 await this.updateSearchArray(payload, true)
             } catch(error){ 
@@ -55,7 +46,7 @@ class SearchBar extends Component {
     }
     
     render(){
-        const {user_id, searchValue} = this.state
+        const {searchValue} = this.state
         return (
             <div className="nav-wrapper row searchbar">
                 <form className='col s8 offset-s2' onSubmit={this.searchResultNetworkRequest}>
