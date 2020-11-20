@@ -20,6 +20,8 @@
   "bugs": {
     "url": "https://github.com/MikePursuit/MemeMe/issues"
   },
-  "homepage": "https://github.com/MikePursuit/MemeMe#readme"
-
+  "homepage": "https://github.com/MikePursuit/MemeMe#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
