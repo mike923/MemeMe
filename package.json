@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Text goes here",
   "main": "index.js",
+  "engines": {
+    "node": "12.5.0"
+  },
   "scripts": {
     "start": "cd back-end && npm start",
     "heroku-pre-build": "cd back-end && npm install && cd ../newfrontend && npm install && npm run build",
@@ -17,14 +20,6 @@
   "bugs": {
     "url": "https://github.com/MikePursuit/MemeMe/issues"
   },
-  "homepage": "https://github.com/MikePursuit/MemeMe#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.4",
-    "pg-promise": "^10.5.7"
-  } 
+  "homepage": "https://github.com/MikePursuit/MemeMe#readme"
+
 }
