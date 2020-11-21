@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import PhotoUpload from "./PhotoUpload.jsx";
 import SubFeed from "./SubFeed.jsx";
+import url from '../apiURL'
 
 class UserProfile extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class UserProfile extends Component {
         
         let param = username && username !== '<empty string>' ? 'name/' + username : id
         try {
-            let {data: { user }} = await axios.get(`http://localhost:3001/users/${param}`);
+            let {data: { user }} = await axios.get(`${url}/users/${param}`);
             console.log(user);
             if (user) this.setState({user});
             else this.setState({
@@ -42,13 +43,13 @@ class UserProfile extends Component {
             
             await this.getPhotos(user.id);
         } catch(error) {
-            let {data: { user }} = await axios.get(`http://localhost:3001/users/${id}`);
+            let {data: { user }} = await axios.get(`${url}/users/${id}`);
             console.log('there was an error retieving user profile', error, id, sessionStorage.getItem('id'))
             this.setState({user})
             this.getPhotos(user.id);
         }
         try {
-            let {data: { payload }} = await axios.get(`http://localhost:3001/photos/user/${id}`);
+            let {data: { payload }} = await axios.get(`${url}/photos/user/${id}`);
             // this.getPhotos(this.state.id);
             // this.setState({ photos: payload });
             console.log(payload);
@@ -65,7 +66,7 @@ class UserProfile extends Component {
         try {
             let {
                 data: { payload }
-            } = await axios.get(`http://localhost:3001/photos/user/${id}`);
+            } = await axios.get(`${url}/photos/user/${id}`);
             this.setState({ photos: payload });
         } catch (error) {
             console.log("There was an error retieving user photos");

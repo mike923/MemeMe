@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import url from '../apiURL'
 import { Redirect, Link } from 'react-router-dom'
 
 class Signup extends Component {
@@ -32,7 +33,7 @@ class Signup extends Component {
         }
         
         try {
-            let {data} = await Axios.post('http://localhost:3001/users/signup', payload)
+            let {data} = await Axios.post(`${url}/users/signup`, payload)
             console.log(data)
             console.log('user id', data.id)
             this.changeID(data.id)
