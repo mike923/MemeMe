@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "cd back-end && npm start",
-    "heroku-pre-build": "cd back-end && npm install && cd ../newfrontend && npm install && npm run build",
+    "heroku-prebuild": "cd back-end && npm install && cd ../newfrontend && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
