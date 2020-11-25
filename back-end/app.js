@@ -49,7 +49,7 @@ app.post('/photos/upload/:poster_id', upload.single('imgURL'), async (req, res, 
     let rootURL = 'http://localhost:3001/'
 
     if(process.env.NODE_ENV === 'production'){
-        rootURL = 'https://aqueous-sierra-27538.herokuapp.com'
+        rootURL = 'https://meme-me-ny.herokuapp.com/'
     }
     const inputQuery = `INSERT INTO photos (poster_id, picture_url, active) VALUES ($1, $2, $3)`
     let imgURL = rootURL + req.file.path.replace('public/', '')
@@ -82,7 +82,7 @@ app.patch('/users/upload/:poster_id', upload.single('imgURL'), async (req, res, 
     let rootURL = 'http://localhost:3001/'
     
     if(process.env.NODE_ENV === 'production'){
-        rootURL = 'https://aqueous-sierra-27538.herokuapp.com'
+        rootURL = 'https://meme-me-ny.herokuapp.com/'
     }
     let imgURL = 'http://localhost:3001/' + req.file.path.replace('public/', '')
     let inputQuery = `
